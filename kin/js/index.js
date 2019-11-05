@@ -101,15 +101,37 @@ $(previous).on('click',function(){
 var time = setInterval(function(){
 	next.click()	
 },5000)
-/*
+
 $('.slider__point').on('click',function(){
-		let element = this.id;
-		alert(element);
+	var idClick = this.id;
+	let one= $('.img.first');
+	let num = $('.img.first').index();
+	sum = num + 1;
+	if(sum > 5){
+		sum=0;
+	}
+	for(let numId = 0; numId <= 4; numId++){
 		
-	})
-*/
-
-
-if(this.id == 'red'){
-	alert('red');
-}
+		let id =('Check' + numId );
+		if(idClick == id){
+			let idElement = document.getElementById('Check' + numId);
+			idElement.style.background = '#90EE90';
+			sum = numId;
+			let further = $('.img').eq(sum);
+			one.fadeOut(1000);
+			one.removeClass('first');
+			if (sum ==($('.content:last').index()+1)){
+				$('.img').eq(0).fadeIn(500);
+				$('.img').eq(0).addClass('first');
+			} else{
+				further.fadeIn(500);
+				further.addClass('first');
+			}
+			
+		}else{
+			let idElement = document.getElementById('Check' + numId);
+			idElement.style.background ="#E6E6FA";
+		}
+	}
+	
+})
