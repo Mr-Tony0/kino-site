@@ -13,7 +13,7 @@ body{
 }
 
 	/***header style**/
-	
+
 header,.navigation{
 	display:flex;
 	justify-content:center;
@@ -22,6 +22,7 @@ header,.navigation{
 }
 .headerCenter,.headerCenter__menu,.headerCenter__ul{
 	display:flex;
+	
 }
 .headerCenter,.headerMobile{
 	width:83%;
@@ -29,6 +30,7 @@ header,.navigation{
 .headerCenter{
 	justify-content:space-between;
 	&__ul{
+		align-self:center;
 		list-style-type:none;
 		justify-content:space-around;
 		width:80%;
@@ -46,7 +48,8 @@ header,.navigation{
 		width:100%;
 	}
 	&__click{
-		height: 60%;
+		height: 20px;
+		align-self:center;
 		width: 20px;
 		background-image: url(../img/nav.png);
 		background-repeat: no-repeat;
@@ -54,9 +57,18 @@ header,.navigation{
 	}
 }
 .logo{
+	display:flex;
+	align-items:center;
+	&__title{
+		font-family:$title;
+		margin-block-start: 0.34em;
+		margin-block-end: 0.34em;
+		color:white;
+	}
 	&__img{
-		width:80.61px;
-		margin-top:16%;
+		width:60px;
+		height:60px;
+		//margin-top:16%;
 	}
 }
 
@@ -74,9 +86,11 @@ header,.navigation{
 
 }
 .search{
+	display:flex;
 	&__img{
+		align-self:center;
 		width:45%;
-		margin-top:1em;
+		//margin-top:1em;
 	}
 }
 .blockSearch{
@@ -90,8 +104,7 @@ header,.navigation{
 		height:30%;
 		display:flex;
 		justify-content:center;
-		margin-top:1%;
-		margin-bottom:1%;
+		align-self:center;
 	}
 	&__input{
 		width:250px;
@@ -265,7 +278,8 @@ header,.navigation{
 	width:100%;
 	justify-content:center;
 	flex-wrap:wrap;
-	//background:
+	background:$blockColor;
+	
 	&__center{
 		width:90%;
 		display:flex;
@@ -273,10 +287,53 @@ header,.navigation{
 	}
 	&__end{
 		width:100%;
-		align-items:center;
+		display:flex;
+		justify-content:center;
+		border-top:1px solid $Dark;
+		margin-top:20px;
+		padding-top:20px;
+	}
+	&__text{
+		font-family:$textMenu;
+		color:white;
+	}
+	&__img{
+		margin:10px;
+		height:25px;
+	}
+	&__element{
+		width:30%;
 	}
 }
-
+.typeVideo{
+	display:flex;
+	justify-content:center;
+	background:$Light;
+	&__text{
+		margin:10px;
+	}
+	&__link{
+		color:$Dark;
+	}
+}
+.filters{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	flex-wrap:wrap;
+	&__select{
+		margin:1%;
+		color:$Dark
+	}
+	&__text{
+		
+		margin-left:1%;
+	}
+	&__check{
+		color:$Dark;
+		margin:5px;
+	}
+}
 @media screen and (min-width: 850px) and (max-width: 1100px){
 	.headerCenter{
 		width:90%;
@@ -321,6 +378,11 @@ header,.navigation{
 	.headerCenter{
 		width:100%;
 	}
+	.logo{
+		&__title{
+			font-size:25px;
+		}
+	}
 	.newFilms{
 		&__element{
 			width:80%;
@@ -329,8 +391,23 @@ header,.navigation{
 			width:80%;
 		}
 	}
+	.logo{
+		&__img{
+			width:40px;
+			height:40px;
+		}
+	}
 	.slider{
 		height:350px;
+	}
+	.footer{
+		
+		&__text{
+			font-size:15px;
+		}
+		&__center{
+			width:100%;
+		}
 	}
 	
 }

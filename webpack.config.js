@@ -1,14 +1,10 @@
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 const webpack = require('webpack')
 module.exports = {
+	entry: './src/js/index.js'
+};
+
+
+
  
-  entry: './src/js/index.js'
- 
-}
-/*
-plugin: [
-	new webpack.ProvidePlugin({
-		$: "jquery",
-		jQuery: "jquery"
-		})
-	]
-	*/

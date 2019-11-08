@@ -8,10 +8,15 @@
 	font-family: Montserrat; /* Гарнитура шрифта */
 	src: url(../fonts/Montserrat.ttf); /* Путь к файлу со шрифтом */
 }
+@font-face {
+	font-family: impact; /* Гарнитура шрифта */
+	src: url(../fonts/ImpactRegular.ttf); /* Путь к файлу со шрифтом */
+}
 
 $bigText : Quicksand;
 $staticText : Montserrat;
 $textMenu : arial;
+$title : impact;
 
 a{
 	color:$Light;
