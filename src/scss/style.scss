@@ -334,10 +334,55 @@ header,.navigation{
 		margin:5px;
 	}
 }
-.previe{
+.one-general{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	width:100%;
+}
+.previe, .description{
 	height:360px;
-	width:640px;
+	width:30%;
 	border:1px solid black;
+}
+.center-block{
+	display:flex;
+	width:90%;
+	justify-content:center;
+	margin:2%;
+	//align-items:center;
+}
+.info{
+	width:60%;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	border:1px solid black;
+}
+.publicity{	
+	margin:5%;
+	margin-top:0%;
+	width:220px;
+	height:560px;
+	border:1px solid black;
+	max-width:100%;
+}
+.two-general{
+	display:flex;
+	justify-content:center;
+	
+}
+.arround-block{
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	border:1px solid black;
+	height:200px;
+	&__element{
+		border:1px solid black;
+		height:100px;
+		width:10%;
+	}
 }
 @media screen and (min-width: 850px) and (max-width: 1100px){
 	.headerCenter{
