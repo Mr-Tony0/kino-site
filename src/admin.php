@@ -108,21 +108,9 @@ $name =  mysqli_real_escape_string($conect, trim($_POST['name']));
 <input type="file" name="loadImg" id="imgFile"/>
 		
 <p>установить видеоплеер</p>
-<input type="file" name="loadPlayer">
+<input type="file" name="loadPlayer"></br></br>
 
-	
-	<div class="previe" id="image">
-	</div>
-	<div class="previe" id="play">
-		<div class="media-wrapper">
-                <video id="player1" width="640" height="360" style="max-width:100%;" preload="none" controls playsinline webkit-playsinline>
-                     <?php echo '<source src="' . htmlspecialchars($uploadfile2) . '">';?>
-                    <track srclang="en" kind="subtitles" src="mediaelement.vtt">
-                    <track srclang="en" kind="chapters" src="chapters.vtt">
-                </video>
-            </div>  
-	</div>
-<input type="text" name="name">название</br>
+<input type="text" name="name">название</br></br>
 
 			<select  name="janr">
 				<option>Жанры</option>
@@ -198,12 +186,10 @@ $name =  mysqli_real_escape_string($conect, trim($_POST['name']));
 	<script>
 		var imgId = document.getElementById('image');
 		var img = '<?php echo$uploadfile1; ?>';
-	
 		imgId.style.backgroundImage = 'url('+img+')';
 		imgId.style.backgroundSize = '100% 100%';
 		imgId.style.backgroundRepeat = 'no-repeat';
 		imgId.style.backgroundPosition = 'center';
-		
 	</script>
 	<script src="./js/script.js"></script>
 </body>
