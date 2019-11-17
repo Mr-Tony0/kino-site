@@ -1,19 +1,6 @@
 <?php
-$conect = mysqli_connect('localhost','root','','films');
-$sql = mysqli_query($conect, 'SELECT `ID`, `name`, `description`, `img`, `video`, `film`, `serial`, `rang`, `data`, `style`, `country`, `time` FROM `film` ORDER BY id DESC LIMIT 1');
-$result = mysqli_fetch_array($sql);
-$name = $result['name'];
-$file = "./".$name.".php"; // Путь к новому файлу
-$html = file_get_contents('./film.php'); // Содержимое
-$handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
-fwrite($handle,$html); // Записать содержимое в дескриптор
-fclose($handle); // Закрыть файл
-$path_parts = pathinfo($_SERVER['SCRIPT_NAME']);
-$nameFile = $path_parts['filename'];
-$search = mysqli_query($conect, "SELECT `ID`, `name`, `description`, `img`, `video`, `film`, `serial`, `rang`, `data`, `style`, `country`, `time` FROM `film` WHERE `name`= '$nameFile'");
-$resultSearch =mysqli_fetch_array($search);
-//echo $path_parts['filename'];
-//echo $resultSearch['name'];
+include('./data.php');
+
 
 ?>
 
@@ -28,7 +15,7 @@ $resultSearch =mysqli_fetch_array($search);
 	
 </head>
 <body>
-	<form method="GET" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
+	<form method="GET" action='link.php' enctype="multipart/form-data">
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
@@ -166,10 +153,23 @@ $resultSearch =mysqli_fetch_array($search);
 			<img class="footer__img"src="./img/vk.svg">
 		</div>
 	</footer>
+	<button id="delete" name="del" type="submit">сохранить изменения</button>
 </form>	
 
 <script src="./js/jquery-3.3.1.js"></script>
+<script src="./js/test1.js"></script>
 <script>
+/* 
+удаление кнопки
+
+	var delet = '<?php echo $delet ?>'
+	if(delet == 'false'){
+		var del = document.getElementById("delete");
+		del.parentNode.removeChild(del);
+	}else{
+		return false;
+	}
+*/	
 	var imgId = document.getElementById('image');
 	var img = '<?php echo $resultSearch['img']; ?>';
 	imgId.style.backgroundImage = 'url('+img+')';

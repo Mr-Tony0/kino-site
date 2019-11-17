@@ -93,62 +93,14 @@
 			</center>
 		</div>
 		<div class="newFilms">
-			<div class="newFilms__element">
-				<div class="newFilms__img kong_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">конг</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img diver_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Дивергент</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			
-			<div class="newFilms__element">
-				<div class="newFilms__img crayzy_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Безумный макс</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img diver_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Дивергент</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img hanibal_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Ганнибал</h3>
-				<p class="newFilms__text">ужасы</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img kong_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">конг</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			
+			<?php
+				$dir = $_SERVER['DOCUMENT_ROOT'].'./src/film/'; 
+				$files = scandir($dir);
+				for ($i = 0; $i < count($files); $i++)
+					if (($files[$i] != ".") && ($files[$i] != ".."))
+						include($dir.$files[$i]);
+					
+			?>
 		</div>
 	</section>
 	<footer class="footer">
