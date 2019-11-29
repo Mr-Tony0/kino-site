@@ -83,7 +83,7 @@ if (isset($_POST['submit'])){
 		echo'поля не заполнены';
 	}
 }
-$name =  mysqli_real_escape_string($conect, trim($_POST['name']));
+
 ?>
 
 <!DOCTYPE html>

@@ -94,12 +94,12 @@
 		</div>
 		<div class="newFilms">
 			<?php
-				$dir = $_SERVER['DOCUMENT_ROOT'].'./src/film/'; 
-				$files = scandir($dir);
-				for ($i = 0; $i < count($files); $i++)
-					if (($files[$i] != ".") && ($files[$i] != ".."))
-						include($dir.$files[$i]);
-					
+			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
+			sort($files);
+			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
+			foreach($files as $file)
+				echo'<a class= link href="film\\'.$file.'" class="product">'.$file.'</a>';
+				//echo $file;
 			?>
 		</div>
 	</section>
