@@ -1,5 +1,5 @@
 <?php
-include('./data.php');
+include('C:\OSPanel\domains\kino-site\src\data.php');
 
 
 ?>
@@ -102,7 +102,7 @@ include('./data.php');
 			<div class="previe" id="play">
 				<div class="media-wrapper">
 					<video id="player1" width="640" height="360" style="max-width:100%;" preload="none" controls playsinline webkit-playsinline>
-						<?php echo '<source src="' . htmlspecialchars($resultSearch['video']) . '">';?>
+						<?php echo '<source src=".' . htmlspecialchars($resultSearch['video']) . '">';?>
 						<track srclang="en" kind="subtitles" src="mediaelement.vtt">
 						<track srclang="en" kind="chapters" src="chapters.vtt">
 					</video>

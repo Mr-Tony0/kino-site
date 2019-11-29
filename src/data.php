@@ -5,7 +5,7 @@ $result = mysqli_fetch_array($sql);
 $name = $result['name'];
 
 
-$file = "./".$name.".php"; // Путь к новому файлу
+$file = "./film/".$name.".php"; // Путь к новому файлу
 $html = file_get_contents('./film.php'); // Содержимое
 $handle = fopen($file,"w+"); // Создать файл, вернуть дескриптор в $handle
 fwrite($handle,$html); // Записать содержимое в дескриптор

@@ -2,10 +2,10 @@
 $conect = mysqli_connect('localhost','root','','films');
 
 if (isset($_POST['submit'])){
-	$uploadImg = 'img/';
+	$uploadImg = './film/img/';
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
 	$uploadfile1 = "$uploadImg$apendImg";
-	$uploadVideo = 'video/';
+	$uploadVideo = './film/video/';
 	$apendVideo=date('YmdHis').rand(100,1000).'.mp4'; 
 	$uploadfile2 = "$uploadVideo$apendVideo"; 
 	if(($_FILES['loadImg']['type'] == 'image/gif' || $_FILES['loadImg']['type'] == 'image/jpeg' || $_FILES['loadImg']['type'] == 'image/png') && ($_FILES['loadImg']['size'] != 0 and $_FILES['loadImg']['size']<=1512000)){ 

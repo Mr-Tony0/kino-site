@@ -94,12 +94,29 @@
 		</div>
 		<div class="newFilms">
 			<?php
+			$conect = mysqli_connect('localhost','root','','films');
 			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
 			sort($files);
 			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
 			foreach($files as $file)
-				echo'<a class= link href="film\\'.$file.'" class="product">'.$file.'</a>';
-				//echo $file;
+				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
+					
+				}else{
+					$filmName = str_replace('.php','',$file);
+					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film` WHERE `name` = '$filmName'");
+					$result_imgDb =mysqli_fetch_array($imgDb);
+					
+					echo '<div class="newFilms__element">
+							<div class="newFilms__img" id ="'.$filmName.'" >
+								<a href="film\\'.$file.'"><div class="newFilms__hover">
+								<span class="newFilms__button">Смотреть</span>
+								</div></a>
+							</div>
+							<h3 class="newFilms__title">'.$filmName.'</h3>
+							<p class="newFilms__text">трелер</p>
+							</div>';
+					//echo'<a class= link href="film\\'.$file.'" class="product">'.$file.'</a>';
+				}
 			?>
 		</div>
 	</section>
@@ -126,7 +143,25 @@
 			<img class="footer__img"src="./img/vk.svg">
 		</div>
 	</footer>
-	
+
+<script>
+/*
+	var imgId = document.getElementById('<?php echo $filmName?>');
+	var img = '.<?php while ($result_imgDb = mysqli_fetch_array($imgDb)){echo $result_imgDb['name']; } ?>';
+	var name = '<?php echo $result_imgDb['name']; ?>';
+	document.write(img);
+	if(name == imgId){
+		imgId.style.backgroundImage = 'url('+img+')';
+		imgId.style.backgroundSize = '100% 100%';
+		imgId.style.backgroundRepeat = 'no-repeat';
+		imgId.style.backgroundPosition = 'center';
+	}
+	//imgId.style.backgroundImage = 'url('+img+')';
+	//imgId.style.backgroundSize = '100% 100%';
+	//imgId.style.backgroundRepeat = 'no-repeat';
+	//imgId.style.backgroundPosition = 'center';
+*/
+</script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="../dist/main.js"></script>
 </body>
