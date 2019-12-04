@@ -112,9 +112,11 @@
 							$name = $result_imgDb['name'];
 							$img = $result_imgDb['img'];
 							
+							
 						}
 						
 					}
+					
 					//echo $result_imgDb['name'];
 					echo '<div class="newFilms__element">
 							<div class="newFilms__img" id ="'.$filmName.'" >
@@ -156,20 +158,56 @@
 		</div>
 	</footer>
 <?php
-	$files = scandir('C:\OSPanel\domains\kino-site\src\film');
-			sort($files);
+
+$dir = opendir ("./film");
+$i=0;
+  while ($file = readdir ($dir)) 
+   $i++;
+	$i = $i-8; 
+	
+/*
+$conect = mysqli_connect('localhost','root','','films');
+$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+while($result_imgDb = mysqli_fetch_array($imgDb)){
+	echo $result_imgDb['img'];
+
+}
+
+
+	$filess = scandir('C:\OSPanel\domains\kino-site\src\film');
+			sort($filess);
 			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
-			foreach($files as $file)
-				//$filmName1 = str_replace('.php','', $file);
-				$filer = $file;
-				echo $filer;
+			foreach($filess as $filer){
+				//$filmName1 = str_replace('video','', $file);
+				$filer = str_replace('.php','', $filer);
+				
+			}
+			*/
 ?>
 <script>
+	var number = '<?php echo $i ?>';
+	//alert(number);
+	var imgId = document.getElementById('<?php $filess = scandir('C:\OSPanel\domains\kino-site\src\film');sort($filess);foreach($filess as $filer){$filer = str_replace('.php','', $filer);echo $filer;}?>');
+	for(i = 0 ; i <= number ; i++){
+		var img = '<?php $conect = mysqli_connect('localhost','root','','films');$files = scandir('C:\OSPanel\domains\kino-site\src\film');sort($files);foreach($files as $file)if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){}else{$filmName = str_replace('.php','',$file);$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");while ($result_imgDb = mysqli_fetch_array($imgDb)) {if($result_imgDb['name'] == $filmName){$name = $result_imgDb['name'];$img = $result_imgDb['img'];echo '.'. $img;}}}?>';
+		var link = new Array();
+		//alert(link[i])
+		if(link[i] === undefined || link[i] = ""){
+			link[i] = img;
+			alert(link[1]);
+		}else{
+			//alert(4);
+			link[i] = "";
+		}
+	//alert(link[1]);
+	}
 	
-	var imgId = document.getElementById('<?php echo $filmName?>');
-	var img = '<?php echo $img ?>';
+	/*
+	//alert(1);
+	
 	//alert(img);
-	//alert(imgId);
+	
+	alert(mas[0]);
 	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';
@@ -179,10 +217,9 @@
 	//imgId.style.backgroundSize = '100% 100%';
 	//imgId.style.backgroundRepeat = 'no-repeat';
 	//imgId.style.backgroundPosition = 'center';
-
+*/
 </script>
 <script src="./js/jquery-3.3.1.js"></script>
 <script src="../dist/main.js"></script>
-</body>
 </body>
 </html>
