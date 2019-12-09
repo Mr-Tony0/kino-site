@@ -111,15 +111,15 @@
 						if($result_imgDb['name'] == $filmName){
 							$name = $result_imgDb['name'];
 							$img = $result_imgDb['img'];
-							
+							//echo $img;
 							
 						}
 						
 					}
+			
 					
-					//echo $result_imgDb['name'];
 					echo '<div class="newFilms__element">
-							<div class="newFilms__img" id ="'.$filmName.'" >
+							<div class="newFilms__img" id ="'.$filmName.'" style= "background-image:url('.$img.')" >
 								<a href="film\\'.$file.'"><div class="newFilms__hover">
 								<span class="newFilms__button">Смотреть</span>
 								</div></a>
@@ -188,19 +188,28 @@ while($result_imgDb = mysqli_fetch_array($imgDb)){
 	var number = '<?php echo $i ?>';
 	//alert(number);
 	var imgId = document.getElementById('<?php $filess = scandir('C:\OSPanel\domains\kino-site\src\film');sort($filess);foreach($filess as $filer){$filer = str_replace('.php','', $filer);echo $filer;}?>');
+	/*
 	for(i = 0 ; i <= number ; i++){
 		var img = '<?php $conect = mysqli_connect('localhost','root','','films');$files = scandir('C:\OSPanel\domains\kino-site\src\film');sort($files);foreach($files as $file)if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){}else{$filmName = str_replace('.php','',$file);$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");while ($result_imgDb = mysqli_fetch_array($imgDb)) {if($result_imgDb['name'] == $filmName){$name = $result_imgDb['name'];$img = $result_imgDb['img'];echo '.'. $img;}}}?>';
 		var link = new Array();
 		//alert(link[i])
-		if(link[i] === undefined || link[i] = ""){
-			link[i] = img;
-			alert(link[1]);
-		}else{
-			//alert(4);
-			link[i] = "";
+		if(link[i] === undefined){
+			
+			//alert(link[1]);
+			if(link[i] == img){
+				img = '';
+				alert(img);
+				break;
+				//return false;
+				 
+			}else{
+				link[i] = img;
+				alert(link[i]);
+			}
 		}
 	//alert(link[1]);
 	}
+	*/
 	
 	/*
 	//alert(1);

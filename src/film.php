@@ -153,11 +153,9 @@ include('C:\OSPanel\domains\kino-site\src\data.php');
 			<img class="footer__img"src="./img/vk.svg">
 		</div>
 	</footer>
-	<button id="delete" name="del" type="submit">сохранить изменения</button>
 </form>	
 
 <script src="./js/jquery-3.3.1.js"></script>
-<script src="./js/test1.js"></script>
 <script>
 /* 
 удаление кнопки
@@ -171,13 +169,13 @@ include('C:\OSPanel\domains\kino-site\src\data.php');
 	}
 */	
 	var imgId = document.getElementById('image');
-	var img = '<?php echo $resultSearch['img']; ?>';
+	var img = '<?php echo '.'.$resultSearch['img']; ?>';
 	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';
 	imgId.style.backgroundPosition = 'center';
 </script>
-<script src="../dist/main.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </body>
 </html>
