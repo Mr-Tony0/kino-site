@@ -94,6 +94,14 @@
 		</div>
 		<div class="newFilms">
 			<?php
+			/*
+			$dir = opendir ("./film");
+			$i=0;
+			while ($file = readdir ($dir)) 
+				$i++;
+				$i = $i-8;
+			*/
+			
 			$conect = mysqli_connect('localhost','root','','films');
 			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
 			sort($files);
@@ -104,31 +112,34 @@
 				}else{
 					
 					$filmName = str_replace('.php','',$file);
-					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film` ORDER BY `data`");
 					//echo $filmName;
 					//echo $filmName;
 					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
 						if($result_imgDb['name'] == $filmName){
 							$name = $result_imgDb['name'];
 							$img = $result_imgDb['img'];
-							//echo $img;
+							
 							
 						}
 						
 					}
-			
 					
-					echo '<div class="newFilms__element">
-							<div class="newFilms__img" id ="'.$filmName.'" style= "background-image:url('.$img.')" >
-								<a href="film\\'.$file.'"><div class="newFilms__hover">
-								<span class="newFilms__button">Смотреть</span>
-								</div></a>
-							</div>
-							<h3 class="newFilms__title">'.$filmName.'</h3>
-							<p class="newFilms__text">трелер</p>
-							</div>';
-					//echo'<a class= link href="film\\'.$file.'" class="product">'.$file.'</a>';
-				
+					//echo $name;
+					$date = mysqli_query($conect, "SELECT `data`,`name` FROM `film`  ORDER BY `data` ");
+					while($result_date = mysqli_fetch_array($date)){
+						
+						echo '<div class="newFilms__element">
+								<div class="newFilms__img" id ="'.$result_date['name'].'" style= "background-image:url('.$img.')" >
+									<a href="film\\'.$result_date['name'].'.php"><div class="newFilms__hover">
+									<span class="newFilms__button">Смотреть</span>
+									</div></a>
+								</div>
+								<h3 class="newFilms__title">'.$result_date['name'].'</h3>
+								<p class="newFilms__text">трелер</p>
+								</div>';
+						
+					}break;
 				}
 				
 			?>
@@ -159,11 +170,7 @@
 	</footer>
 <?php
 
-$dir = opendir ("./film");
-$i=0;
-  while ($file = readdir ($dir)) 
-   $i++;
-	$i = $i-8; 
+ 
 	
 /*
 $conect = mysqli_connect('localhost','root','','films');
@@ -186,8 +193,10 @@ while($result_imgDb = mysqli_fetch_array($imgDb)){
 ?>
 <script>
 	var number = '<?php echo $i ?>';
-	//alert(number);
-	var imgId = document.getElementById('<?php $filess = scandir('C:\OSPanel\domains\kino-site\src\film');sort($filess);foreach($filess as $filer){$filer = str_replace('.php','', $filer);echo $filer;}?>');
+	if(number>4){
+		
+	}
+	//var imgId = document.getElementById('<?php $filess = scandir('C:\OSPanel\domains\kino-site\src\film');sort($filess);foreach($filess as $filer){$filer = str_replace('.php','', $filer);echo $filer;}?>');
 	/*
 	for(i = 0 ; i <= number ; i++){
 		var img = '<?php $conect = mysqli_connect('localhost','root','','films');$files = scandir('C:\OSPanel\domains\kino-site\src\film');sort($files);foreach($files as $file)if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){}else{$filmName = str_replace('.php','',$file);$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");while ($result_imgDb = mysqli_fetch_array($imgDb)) {if($result_imgDb['name'] == $filmName){$name = $result_imgDb['name'];$img = $result_imgDb['img'];echo '.'. $img;}}}?>';
