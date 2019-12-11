@@ -94,14 +94,6 @@
 		</div>
 		<div class="newFilms">
 			<?php
-			/*
-			$dir = opendir ("./film");
-			$i=0;
-			while ($file = readdir ($dir)) 
-				$i++;
-				$i = $i-8;
-			*/
-			
 			$conect = mysqli_connect('localhost','root','','films');
 			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
 			sort($files);
@@ -125,7 +117,7 @@
 						
 					}
 					
-					$date = mysqli_query($conect, "SELECT `data`,`name`,`img` FROM `film`  ORDER BY `data` ");
+					$date = mysqli_query($conect, "SELECT `data`,`name`,`img` FROM `film`  ORDER BY `data` DESC LIMIT 39");
 					while($result_date = mysqli_fetch_array($date)){
 						
 						echo '<div class="newFilms__element">
@@ -137,6 +129,7 @@
 								<h3 class="newFilms__title">'.$result_date['name'].'</h3>
 								<p class="newFilms__text">трелер</p>
 								</div>';
+						
 						
 					}break;
 					

@@ -9,7 +9,7 @@
 	
 </head>
 <body>
-
+<form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
@@ -53,7 +53,7 @@
 			<p class="typeVideo__text"><a class="typeVideo__link" href ="">Сериалы</a></p>
 		</div>
 		<div class="filters">
-			<select class="filters__select">
+			<select class="filters__select" name="janr">
 				<option>Жанры</option>
 				<option>комедия</option>
 				<option>триллер</option>
@@ -74,7 +74,7 @@
 				<option>детектив</option>
 				<option>аниме</option>
 			</select>
-			<select class="filters__select">
+			<select class="filters__select" name="strana">
 				<option>Страны</option>
 				<option>США</option>
 				<option>СССР</option>
@@ -106,124 +106,71 @@
 				<option>другое...</option>
 			</select>
 			<p class="filters__text">Сортировать по:</p>
-			<span class="filters__check"><input type="checkbox">Рейтингу</span>
-			<span class="filters__check"><input type="checkbox">Сначало новые</span>
-			<span class="filters__check"><input type="checkbox">По продолжительности</span>
-			<span class="filters__check"><input type="checkbox">По алфавиту</span>
+			<span class="filters__check"><input type="checkbox" name="rang">Рейтингу</span>
+			<span class="filters__check"><input type="checkbox" name ="new">Сначало новые</span>
+			<span class="filters__check"><input type="checkbox" name ="time">По продолжительности</span>
+			<span class="filters__check"><input type="checkbox" name="alphabet">По алфавиту</span>
 		</div>
 	</section>
 	<section>
 		<div class="newFilms">
-			<div class="newFilms__element">
-				<div class="newFilms__img kong_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">конг</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img diver_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Дивергент</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			
-			<div class="newFilms__element">
-				<div class="newFilms__img crayzy_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Безумный макс</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img diver_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Дивергент</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img hanibal_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Ганнибал</h3>
-				<p class="newFilms__text">ужасы</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img kong_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">конг</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img kong_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">конг</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img diver_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Дивергент</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			
-			<div class="newFilms__element">
-				<div class="newFilms__img crayzy_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Безумный макс</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img diver_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Дивергент</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img hanibal_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">Ганнибал</h3>
-				<p class="newFilms__text">ужасы</p>
-			</div>
-			<div class="newFilms__element">
-				<div class="newFilms__img kong_img">
-					<div class="newFilms__hover">
-						<span class="newFilms__button">Смотреть</span>
-					</div>
-				</div>
-				<h3 class="newFilms__title">конг</h3>
-				<p class="newFilms__text">трелер</p>
-			</div>
+		<?php
+			$conect = mysqli_connect('localhost','root','','films');
+			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
+			sort($files);
+			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
+			foreach($files as $file)
+				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
+					
+				}else{
+					
+					$filmName = str_replace('.php','',$file);
+					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+					//echo $filmName;
+					//echo $filmName;
+					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
+						if($result_imgDb['name'] == $filmName){
+							$name = $result_imgDb['name'];
+							$img = $result_imgDb['img'];
+							//echo $img;
+							
+						}
+						
+					}
+					if (isset($_POST['go'])){
+						
+						$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
+						$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
+						$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
+						$new = mysqli_real_escape_string($conect, trim($_POST['new']));
+						$time = mysqli_real_escape_string($conect, trim($_POST['time']));
+						$alphabet = mysqli_real_escape_string($conect, trim($_POST['alphabet']));
+						$input =  mysqli_query($conect,"SELECT `name`,`img`,`rang`,`country` FROM `film` ");
+						while ($result_input = mysqli_fetch_array($input)){
+							if($result_input['rang'] == $rang or $result_input['country'] == $strana){
+								echo $result_input['name'];
+							}
+							
+						}
+					}else{
+						
+						echo '<div class="newFilms__element">
+								<div class="newFilms__img" id ="'.$name.'" style= "background-image:url('.$img.')" >
+									<a href="film\\'.$filmName.'.php"><div class="newFilms__hover">
+									<span class="newFilms__button">Смотреть</span>
+									</div></a>
+								</div>
+								<h3 class="newFilms__title">'.$name.'</h3>
+								<p class="newFilms__text">трелер</p>
+								</div>';
+						
+						
+					}
+					
+					
+				}
+				
+			?>
 		</div>
 	</section>
 	<footer class="footer">
