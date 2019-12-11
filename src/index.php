@@ -112,25 +112,24 @@
 				}else{
 					
 					$filmName = str_replace('.php','',$file);
-					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film` ORDER BY `data`");
+					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
 					//echo $filmName;
 					//echo $filmName;
 					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
 						if($result_imgDb['name'] == $filmName){
 							$name = $result_imgDb['name'];
 							$img = $result_imgDb['img'];
-							
+							//echo $img;
 							
 						}
 						
 					}
 					
-					//echo $name;
-					$date = mysqli_query($conect, "SELECT `data`,`name` FROM `film`  ORDER BY `data` ");
+					$date = mysqli_query($conect, "SELECT `data`,`name`,`img` FROM `film`  ORDER BY `data` ");
 					while($result_date = mysqli_fetch_array($date)){
 						
 						echo '<div class="newFilms__element">
-								<div class="newFilms__img" id ="'.$result_date['name'].'" style= "background-image:url('.$img.')" >
+								<div class="newFilms__img" id ="'.$result_date['name'].'" style= "background-image:url('.$result_date['img'].')" >
 									<a href="film\\'.$result_date['name'].'.php"><div class="newFilms__hover">
 									<span class="newFilms__button">Смотреть</span>
 									</div></a>
@@ -140,6 +139,8 @@
 								</div>';
 						
 					}break;
+					
+					
 				}
 				
 			?>
