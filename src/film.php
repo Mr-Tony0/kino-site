@@ -1,5 +1,5 @@
 <?php
-include('C:\OSPanel\domains\kino-site\src\data.php');
+include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 
 
 ?>

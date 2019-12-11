@@ -116,7 +116,7 @@
 		<div class="newFilms">
 		<?php
 			$conect = mysqli_connect('localhost','root','','films');
-			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
+			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
 			sort($files);
 			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
 			foreach($files as $file)
@@ -145,13 +145,38 @@
 						$new = mysqli_real_escape_string($conect, trim($_POST['new']));
 						$time = mysqli_real_escape_string($conect, trim($_POST['time']));
 						$alphabet = mysqli_real_escape_string($conect, trim($_POST['alphabet']));
-						$input =  mysqli_query($conect,"SELECT `name`,`img`,`rang`,`country` FROM `film` ");
+						
+						$input =  mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ");
 						while ($result_input = mysqli_fetch_array($input)){
-							if($result_input['rang'] == $rang or $result_input['country'] == $strana){
-								echo $result_input['name'];
+							if($result_input['style'] == $janr or $result_input['country'] == $strana){
+								echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_input['name'].'" style= "background-image:url('.$result_input['img'].')" >
+										<a href="film\\'.$result_input['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_input['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
 							}
 							
 						}
+					
+					if($rang == 'on'){
+						$sort = mysqli_query($conect,"SELECT `name`,`img` FROM `film` ORDER BY `rang` ");
+						while ($result_sort = mysqli_fetch_array($sort)){
+							echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_sort['name'].'" style= "background-image:url('.$result_sort['img'].')" >
+										<a href="film\\'.$result_sort['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_sort['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+						}
+					}
+					break;
 					}else{
 						
 						echo '<div class="newFilms__element">

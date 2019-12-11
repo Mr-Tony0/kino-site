@@ -95,7 +95,7 @@
 		<div class="newFilms">
 			<?php
 			$conect = mysqli_connect('localhost','root','','films');
-			$files = scandir('C:\OSPanel\domains\kino-site\src\film');
+			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
 			sort($files);
 			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
 			foreach($files as $file)
