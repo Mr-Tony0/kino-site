@@ -13,13 +13,13 @@
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.html"><img class="logo__img" src="./img/Logo.png" alt=""></a>
-				<a href="index.html"><h1 class="logo__title">KINgaroo</h1></a>
+				<a href="index.php"><img class="logo__img" src="./img/Logo.png" alt=""></a>
+				<a href="index.php"><h1 class="logo__title">KINgaroo</h1></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Главная</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.html">Каталог</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="index.php">Главная</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Каталог</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="">Новинки</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="">Популярное</a></li>
 				</ul>
@@ -127,6 +127,59 @@
 									</div></a>
 								</div>
 								<h3 class="newFilms__title">'.$result_date['name'].'</h3>
+								<p class="newFilms__text">трелер</p>
+								</div>';
+						
+						
+					}break;
+					
+					
+				}
+				
+			?>
+		</div>
+		<div class="nameSection">
+			<center>
+				<h2 class="nameSection__title">Популярное</h2>
+				<div class="nameSection__line">
+				</div>
+			</center>
+		</div>
+		<div class="newFilms">
+			<?php
+			$conect = mysqli_connect('localhost','root','','films');
+			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
+			sort($files);
+			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
+			foreach($files as $file)
+				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
+					
+				}else{
+					
+					$filmName = str_replace('.php','',$file);
+					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+					//echo $filmName;
+					//echo $filmName;
+					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
+						if($result_imgDb['name'] == $filmName){
+							$name = $result_imgDb['name'];
+							$img = $result_imgDb['img'];
+							//echo $img;
+							
+						}
+						
+					}
+					
+					$pop = mysqli_query($conect, "SELECT `name`,`img` FROM `film`  ORDER BY `rang` DESC LIMIT 39");
+					while($result_pop = mysqli_fetch_array($pop)){
+						
+						echo '<div class="newFilms__element">
+								<div class="newFilms__img" id ="'.$result_pop['name'].'" style= "background-image:url('.$result_pop['img'].')" >
+									<a href="film\\'.$result_pop['name'].'.php"><div class="newFilms__hover">
+									<span class="newFilms__button">Смотреть</span>
+									</div></a>
+								</div>
+								<h3 class="newFilms__title">'.$result_pop['name'].'</h3>
 								<p class="newFilms__text">трелер</p>
 								</div>';
 						

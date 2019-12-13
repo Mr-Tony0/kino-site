@@ -137,6 +137,11 @@
 						}
 						
 					}
+					
+						
+					//unset($_POST['go']);
+					//break;
+					
 					if (isset($_POST['go'])){
 						
 						$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
@@ -145,10 +150,51 @@
 						$new = mysqli_real_escape_string($conect, trim($_POST['new']));
 						$time = mysqli_real_escape_string($conect, trim($_POST['time']));
 						$alphabet = mysqli_real_escape_string($conect, trim($_POST['alphabet']));
-						
 						$input =  mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ");
+						
+						
+						
+			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
+			sort($files);
+			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
+			foreach($files as $file)
+				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
+					
+				}else{
+					
+					$filmName = str_replace('.php','',$file);
+					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+					//echo $filmName;
+					//echo $filmName;
+					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
+						if($result_imgDb['name'] == $filmName){
+							$name = $result_imgDb['name'];
+							$img = $result_imgDb['img'];
+							//echo $img;
+							
+							}
+						
+						}
+					}
+						
+						
+						
+						
 						while ($result_input = mysqli_fetch_array($input)){
+							
 							if($result_input['style'] == $janr or $result_input['country'] == $strana){
+							
+								echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_input['name'].'" style= "background-image:url('.$result_input['img'].')" >
+										<a href="film\\'.$result_input['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_input['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+								
+							}if($janr =='Жанры' and $strana == 'Страны'){
 								echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_input['name'].'" style= "background-image:url('.$result_input['img'].')" >
 										<a href="film\\'.$result_input['name'].'.php"><div class="newFilms__hover">
@@ -159,6 +205,7 @@
 									<p class="newFilms__text">трелер</p>
 									</div>';
 							}
+							
 							
 						}
 					
@@ -175,9 +222,15 @@
 									<p class="newFilms__text">трелер</p>
 									</div>';
 						}
+						
 					}
-					break;
-					}else{
+					
+				
+				break;
+				
+				}
+				
+				else{
 						
 						echo '<div class="newFilms__element">
 								<div class="newFilms__img" id ="'.$name.'" style= "background-image:url('.$img.')" >
