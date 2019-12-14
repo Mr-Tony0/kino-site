@@ -46,6 +46,10 @@
 			<div class="blockSearch__element">
 				<input class="blockSearch__input" type="text" name="search">
 				<button type="submit" name="go" class="blockSearch__button color_searchButton">Найти</button>
+				<?php
+					$conect = mysqli_connect('localhost','root','','films');
+					
+				?>
 			</div>
 		</div>
 		<div class="typeVideo">
@@ -144,6 +148,8 @@
 					
 					if (isset($_POST['go'])){
 						
+					
+					
 						$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
 						$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
 						$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
@@ -178,11 +184,30 @@
 					}
 						
 						
-						
+						$filmName = mysqli_real_escape_string($conect, trim($_POST['search']));
+						$filmName = preg_replace_callback('~(?<=\\A|[.!?])\\s*?[a-zа-яё]~u', function($m) {
+							return mb_strtoupper($m[0], 'UTF-8');
+						}, $filmName);
+					
+						$sear =  mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+						while ($result_sear = mysqli_fetch_array($sear)){
+							//echo $filmName;
+							if($filmName == $result_sear['name']){
+								echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_sear['name'].'" style= "background-image:url('.$result_sear['img'].')" >
+										<a href="film\\'.$result_sear['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_sear['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+							}
+						}
 						
 						while ($result_input = mysqli_fetch_array($input)){
 							
-							if(($result_input['style'] == $janr or $result_input['country'] == $strana) and $new != 'on' and $rang != 'on'){
+							if(($result_input['style'] == $janr or $result_input['country'] == $strana) and $new != 'on' and $rang != 'on' and $time != 'on' and $alphabet != 'on' and $filmName ==''){
 							
 								echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_input['name'].'" style= "background-image:url('.$result_input['img'].')" >
@@ -194,7 +219,7 @@
 									<p class="newFilms__text">трелер</p>
 									</div>';
 								
-							}if(($janr =='Жанры' and $strana == 'Страны') and $new != 'on' and $rang != 'on'){
+							}if(($janr =='Жанры' and $strana == 'Страны') and $new != 'on' and $rang != 'on' and $time != 'on' and $alphabet != 'on' and $filmName ==''){
 								echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_input['name'].'" style= "background-image:url('.$result_input['img'].')" >
 										<a href="film\\'.$result_input['name'].'.php"><div class="newFilms__hover">
@@ -214,7 +239,7 @@
 						
 						$sort = mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ORDER BY `rang` DESC ");
 						while ($result_sort = mysqli_fetch_array($sort)){
-							if($result_sort['style'] == $janr or $result_sort['country'] == $strana){
+							if($result_sort['style'] == $janr or $result_sort['country'] == $strana and $filmName ==''){
 								echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_sort['name'].'" style= "background-image:url('.$result_sort['img'].')" >
 										<a href="film\\'.$result_sort['name'].'.php"><div class="newFilms__hover">
@@ -224,7 +249,7 @@
 									<h3 class="newFilms__title">'.$result_sort['name'].'</h3>
 									<p class="newFilms__text">трелер</p>
 									</div>';
-							}if($janr =='Жанры' and $strana == 'Страны'){
+							}if($janr =='Жанры' and $strana == 'Страны' and $filmName ==''){
 							echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_sort['name'].'" style= "background-image:url('.$result_sort['img'].')" >
 										<a href="film\\'.$result_sort['name'].'.php"><div class="newFilms__hover">
@@ -243,7 +268,7 @@
 					}if($new == 'on'){
 						$now = mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ORDER BY `data` DESC ");
 						while ($result_now = mysqli_fetch_array($now)){
-							if($result_sort['style'] == $janr or $result_sort['country'] == $strana){
+							if($result_now['style'] == $janr or $result_now['country'] == $strana and $filmName ==''){
 								echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_now['name'].'" style= "background-image:url('.$result_now['img'].')" >
 										<a href="film\\'.$result_now['name'].'.php"><div class="newFilms__hover">
@@ -253,7 +278,7 @@
 									<h3 class="newFilms__title">'.$result_now['name'].'</h3>
 									<p class="newFilms__text">трелер</p>
 									</div>';
-							}if(($janr =='Жанры' and $strana == 'Страны')){
+							}if(($janr =='Жанры' and $strana == 'Страны' and $filmName =='')){
 							echo '<div class="newFilms__element">
 									<div class="newFilms__img" id ="'.$result_now['name'].'" style= "background-image:url('.$result_now['img'].')" >
 										<a href="film\\'.$result_now['name'].'.php"><div class="newFilms__hover">
@@ -261,6 +286,58 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_now['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+									
+							}
+						}
+					}if($time == 'on'){
+						$short = mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ORDER BY `time`");
+						while ($result_short = mysqli_fetch_array($short)){
+							if($result_short['style'] == $janr or $result_short['country'] == $strana and $filmName ==''){
+								echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_short['name'].'" style= "background-image:url('.$result_short['img'].')" >
+										<a href="film\\'.$result_short['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_short['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+							}if($janr =='Жанры' and $strana == 'Страны' and $filmName ==''){
+							echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_short['name'].'" style= "background-image:url('.$result_short['img'].')" >
+										<a href="film\\'.$result_short['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_short['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+									
+							}
+						}
+					}if($alphabet == 'on'){
+						$alph = mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ORDER BY `name`");
+						while ($result_alph = mysqli_fetch_array($alph)){
+							if($result_alph['style'] == $janr or $result_alph['country'] == $strana and $filmName ==''){
+								echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_alph['name'].'" style= "background-image:url('.$result_alph['img'].')" >
+										<a href="film\\'.$result_alph['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_alph['name'].'</h3>
+									<p class="newFilms__text">трелер</p>
+									</div>';
+							}if(($janr =='Жанры' and $strana == 'Страны' and $filmName =='')){
+							echo '<div class="newFilms__element">
+									<div class="newFilms__img" id ="'.$result_alph['name'].'" style= "background-image:url('.$result_alph['img'].')" >
+										<a href="film\\'.$result_alph['name'].'.php"><div class="newFilms__hover">
+										<span class="newFilms__button">Смотреть</span>
+										</div></a>
+									</div>
+									<h3 class="newFilms__title">'.$result_alph['name'].'</h3>
 									<p class="newFilms__text">трелер</p>
 									</div>';
 									

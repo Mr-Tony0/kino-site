@@ -2,6 +2,7 @@
 $conect = mysqli_connect('localhost','root','','films');
 
 if (isset($_POST['submit'])){
+	
 	$uploadImg = './film/img/';
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
 	$uploadfile1 = "$uploadImg$apendImg";
@@ -55,6 +56,10 @@ if (isset($_POST['submit'])){
 
 
 	$name =  mysqli_real_escape_string($conect, trim($_POST['name']));
+	$name = preg_replace_callback('~(?<=\\A|[.!?])\\s*?[a-zа-яё]~u', function($m){
+		return mb_strtoupper($m[0], 'UTF-8');
+	}, $name);
+	
 	$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
 	$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
 	$loadImg = $uploadfile1;
