@@ -1,7 +1,6 @@
 <?php
 include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 
-
 ?>
 
 <!DOCTYPE html>
@@ -82,15 +81,13 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 			</div>
 			<div class="description">
 				<p class="description__text"><?php echo $resultSearch['description'];?></p>
-				<div class="key">
-					<p>продолжительность:<?php echo $resultSearch['time'];?> минут</p>
-					<p>жанры: <?php echo $resultSearch['style'];?></p>
-				</div>
 			</div>
 		</div>
 		<div class="info">
-			<p>Страна:<?php echo $resultSearch['country'];?></p>
-			<p>Рейтинг: <?php echo $resultSearch['rang'];?></p>
+			<p class="info__text">продолжительность:<?php echo $resultSearch['time'];?> минут</p>
+			<p class="info__text">жанры: <?php echo $resultSearch['style'];?></p>
+			<p class="info__text">Страна:<?php echo $resultSearch['country'];?></p>
+			<p class="info__text">Рейтинг: <?php echo $resultSearch['rang'];?></p>
 		</div>
 	</section>
 	<section class="two-general">
@@ -101,7 +98,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 			
 			<div class="previe" id="play">
 				<div class="media-wrapper">
-					<video id="player1" width="640" height="360" style="max-width:100%;" preload="none" controls playsinline webkit-playsinline>
+					<video id="player1" width="840" height="460" style="max-width:100%;" preload="none" controls playsinline webkit-playsinline>
 						<?php echo '<source src=".' . htmlspecialchars($resultSearch['video']) . '">';?>
 						<track srclang="en" kind="subtitles" src="mediaelement.vtt">
 						<track srclang="en" kind="chapters" src="chapters.vtt">
@@ -116,16 +113,29 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 	</section>
 	<section class="free-general">
 		<div class="arround-block">
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
-			<div class="arround-block__element">рек фильмы</div>
+		<?php
+		$conect = mysqli_connect('localhost','root','','films');
+		$rek =  mysqli_query($conect,"SELECT `name`,`img`FROM `film` ORDER BY `data` DESC LIMIT 5");
+		while ($result_rek = mysqli_fetch_array($rek)){
+			
+				echo '<div class="arround-block__element">
+						<div class="arround-block__img" style="background-image:url(.'.$result_rek['img'].');">
+							<a href="./'.$result_rek['name'].'.php">
+								<div class="newFilms__hover">
+									<span class="newFilms__button">Смотреть</span>
+								</div>
+							</a>
+						</div>
+						<h3 class="arround-block__title">'.$result_rek['name'].'</h3>
+					</div>';
+			
+		}
+		?>
+			
 		</div>
+		
+	</section>
+	<section class="foo-general">
 		<div class="arround-block">
 			реклама
 		</div>

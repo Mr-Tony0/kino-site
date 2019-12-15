@@ -5,7 +5,6 @@
 
 
 body{
-	
 	margin:0;
 	padding:0;
 	max-width:1920px;
@@ -344,45 +343,71 @@ header,.navigation{
 .previe, .description{
 	height:360px;
 	width:30%;
-	border:1px solid black;
+	margin:2%;
+}
+.description{
+	&__text{
+		color:$Light;
+	}
 }
 .center-block{
 	display:flex;
 	width:90%;
 	justify-content:center;
 	margin:2%;
-	//align-items:center;
+	&__text{
+		color:white;
+	}
+}
+.key{
+	&__text{
+		color:white;
+	}
 }
 .info{
 	width:60%;
 	display:flex;
 	justify-content:space-around;
 	align-items:center;
-	border:1px solid black;
+	&__text{
+		color:white;
+	}
 }
 .publicity{	
 	margin:5%;
 	margin-top:0%;
 	width:220px;
 	height:560px;
-	border:1px solid black;
 	max-width:100%;
 }
 .two-general{
 	display:flex;
 	justify-content:center;
-	
+}
+.free-general{
+	width:100%;
+	display:flex;
+	justify-content:center;
 }
 .arround-block{
 	display:flex;
 	justify-content:space-around;
 	align-items:center;
-	border:1px solid black;
 	height:200px;
+	width:90%;
 	&__element{
-		border:1px solid black;
-		height:100px;
-		width:10%;
+		height:100%;
+		width:20%;
+	}
+	&__img{
+		height:70%;
+		width:100%;
+		
+	}
+	&__title{
+		margin-block-end: 0.5em;
+		margin-block-start: 0.5em;
+		color:$elements;
 	}
 }
 @media screen and (min-width: 850px) and (max-width: 1100px){

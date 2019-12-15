@@ -44,12 +44,9 @@
 	<section class="filter background_light">
 		<div class="blockSearch background_light">
 			<div class="blockSearch__element">
-				<input class="blockSearch__input" type="text" name="search">
+				<input class="blockSearch__input" type="text" name="search" value = "<?php echo $filmName; ?>">
 				<button type="submit" name="go" class="blockSearch__button color_searchButton">Найти</button>
-				<?php
-					$conect = mysqli_connect('localhost','root','','films');
-					
-				?>
+				
 			</div>
 		</div>
 		<div class="typeVideo">
@@ -110,10 +107,10 @@
 				<option>другое...</option>
 			</select>
 			<p class="filters__text">Сортировать по:</p>
-			<span class="filters__check"><input type="checkbox" name="rang">Рейтингу</span>
-			<span class="filters__check"><input type="checkbox" name ="new">Сначало новые</span>
-			<span class="filters__check"><input type="checkbox" name ="time">По продолжительности</span>
-			<span class="filters__check"><input type="checkbox" name="alphabet">По алфавиту</span>
+			<span class="filters__check"><input class="filters__input" type="checkbox" name="rang" id="rang">Рейтингу</span>
+			<span class="filters__check"><input class="filters__input" type="checkbox" name ="new" id="new">Сначало новые</span>
+			<span class="filters__check"><input class="filters__input" type="checkbox" name ="time" id="time">По продолжительности</span>
+			<span class="filters__check"><input class="filters__input" type="checkbox" name="alphabet" id="alphabet">По алфавиту</span>
 		</div>
 	</section>
 	<section>
@@ -395,6 +392,11 @@
 		</div>
 	</footer>
 <script src="./js/jquery-3.3.1.js"></script>
+<script>
+	$('input[type="checkbox"]').on('change', function() {
+	$('input[type="checkbox"]').not(this).prop('checked', false);
+});
+</script>
 <script src="../dist/main.js"></script>
 </body>
 </html>
