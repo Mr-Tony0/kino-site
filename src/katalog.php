@@ -13,15 +13,15 @@
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.html"><img class="logo__img" src="./img/Logo.png" alt=""></a>
-				<a href="index.html"><h1 class="logo__title">KINgaroo</h1></a>
+				<a href="./index.php"><img class="logo__img" src="./img/Logo.png" alt=""></a>
+				<a href="./index.php"><h1 class="logo__title">KINgaroo</h1></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="index.html">Главная</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.html">Каталог</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Новинки</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Популярное</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./index.php">Главная</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Каталог</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./index.php">Новинки</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="./index.php">Популярное</a></li>
 				</ul>
 			</div>
 			</div>
@@ -44,7 +44,7 @@
 	<section class="filter background_light">
 		<div class="blockSearch background_light">
 			<div class="blockSearch__element">
-				<input class="blockSearch__input" type="text" name="search" value = "<?php echo $filmName; ?>">
+				<input class="blockSearch__input" type="text" name="search">
 				<button type="submit" name="go" class="blockSearch__button color_searchButton">Найти</button>
 				
 			</div>
@@ -117,36 +117,8 @@
 		<div class="newFilms">
 		<?php
 			$conect = mysqli_connect('localhost','root','','films');
-			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
-			sort($files);
-			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
-			foreach($files as $file)
-				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
-					
-				}else{
-					
-					$filmName = str_replace('.php','',$file);
-					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
-					//echo $filmName;
-					//echo $filmName;
-					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
-						if($result_imgDb['name'] == $filmName){
-							$name = $result_imgDb['name'];
-							$img = $result_imgDb['img'];
-							//echo $img;
-							
-						}
-						
-					}
-					
-						
-					//unset($_POST['go']);
-					//break;
-					
 					if (isset($_POST['go'])){
-						
-					
-					
+
 						$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
 						$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
 						$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
@@ -154,33 +126,7 @@
 						$time = mysqli_real_escape_string($conect, trim($_POST['time']));
 						$alphabet = mysqli_real_escape_string($conect, trim($_POST['alphabet']));
 						$input =  mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ");
-						
-						
-						
-			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
-			sort($files);
-			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
-			foreach($files as $file)
-				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
-					
-				}else{
-					
-					$filmName = str_replace('.php','',$file);
-					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
-					//echo $filmName;
-					//echo $filmName;
-					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
-						if($result_imgDb['name'] == $filmName){
-							$name = $result_imgDb['name'];
-							$img = $result_imgDb['img'];
-							//echo $img;
-							
-							}
-						
-						}
-					}
-						
-						
+
 						$filmName = mysqli_real_escape_string($conect, trim($_POST['search']));
 						$filmName = preg_replace_callback('~(?<=\\A|[.!?])\\s*?[a-zа-яё]~u', function($m) {
 							return mb_strtoupper($m[0], 'UTF-8');
@@ -341,29 +287,24 @@
 							}
 						}
 					}
-					
-				
-				break;
-				
-				}
-				
-				else{
-						
+				}else{
+						$standart =  mysqli_query($conect,"SELECT `name`,`img` FROM `film`");
+						while ($result_standart = mysqli_fetch_array($standart)){
 						echo '<div class="newFilms__element">
-								<div class="newFilms__img" id ="'.$name.'" style= "background-image:url('.$img.')" >
-									<a href="film\\'.$filmName.'.php"><div class="newFilms__hover">
+								<div class="newFilms__img" id ="'.$result_standart['name'].'" style= "background-image:url('.$result_standart['img'].')" >
+									<a href="film\\'.$result_standart['name'].'.php"><div class="newFilms__hover">
 									<span class="newFilms__button">Смотреть</span>
 									</div></a>
 								</div>
-								<h3 class="newFilms__title">'.$name.'</h3>
+								<h3 class="newFilms__title">'.$result_standart['name'].'</h3>
 								<p class="newFilms__text">трелер</p>
 								</div>';
-						
+						}
 						
 					}
 					
 					
-				}
+				
 				
 			?>
 		</div>

@@ -18,15 +18,15 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 	<header>
 		<div class="headerCenter">
 			<div class="logo">
-				<a href="index.html"><img class="logo__img" src="./img/Logo.png" alt=""></a>
-				<a href="index.html"><h1 class="logo__title">KINgaroo</h1></a>
+				<a href="../index.php"><img class="logo__img" src="./img/Logo.png" alt=""></a>
+				<a href="../index.php"><h1 class="logo__title">KINgaroo</h1></a>
 			</div>
 			<div class="headerCenter__menu desktop">
 				<ul class="headerCenter__ul">
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Главная</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.html">Каталог</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Новинки</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Популярное</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Главная</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../katalog.php">Каталог</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Новинки</a></li>
+					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Популярное</a></li>
 				</ul>
 			</div>
 				<div class="search">

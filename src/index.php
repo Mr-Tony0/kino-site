@@ -99,47 +99,22 @@
 		</div>
 		<div class="newFilms">
 			<?php
-			$conect = mysqli_connect('localhost','root','','films');
-			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
-			sort($files);
-			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
-			foreach($files as $file)
-				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
-					
-				}else{
-					
-					$filmName = str_replace('.php','',$file);
-					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
-					//echo $filmName;
-					//echo $filmName;
-					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
-						if($result_imgDb['name'] == $filmName){
-							$name = $result_imgDb['name'];
-							$img = $result_imgDb['img'];
-							//echo $img;
-							
-						}
-						
-					}
-					
-					$date = mysqli_query($conect, "SELECT `data`,`name`,`img` FROM `film`  ORDER BY `data` DESC LIMIT 39");
-					while($result_date = mysqli_fetch_array($date)){
-						
-						echo '<div class="newFilms__element">
-								<div class="newFilms__img" id ="'.$result_date['name'].'" style= "background-image:url('.$result_date['img'].')" >
-									<a href="film\\'.$result_date['name'].'.php"><div class="newFilms__hover">
-									<span class="newFilms__button">Смотреть</span>
-									</div></a>
-								</div>
-								<h3 class="newFilms__title">'.$result_date['name'].'</h3>
-								<p class="newFilms__text">трелер</p>
-								</div>';
-						
-						
-					}break;
-					
-					
+				$conect = mysqli_connect('localhost','root','','films');
+				$date = mysqli_query($conect, "SELECT `data`,`name`,`img` FROM `film`  ORDER BY `data` DESC LIMIT 39");
+				while($result_date = mysqli_fetch_array($date)){
+					echo '<div class="newFilms__element">
+							<div class="newFilms__img" id ="'.$result_date['name'].'" style= "background-image:url('.$result_date['img'].')" >
+								<a href="film\\'.$result_date['name'].'.php"><div class="newFilms__hover">
+								<span class="newFilms__button">Смотреть</span>
+								</div></a>
+							</div>
+							<h3 class="newFilms__title">'.$result_date['name'].'</h3>
+							<p class="newFilms__text">трелер</p>
+							</div>';	
 				}
+					
+					
+				
 				
 			?>
 		</div>
@@ -153,47 +128,20 @@
 		<div class="newFilms">
 			<?php
 			$conect = mysqli_connect('localhost','root','','films');
-			$files = scandir('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\film');
-			sort($files);
-			//Файловая кнопка (Если тебе нужны названия просто пиши 'echo $file')
-			foreach($files as $file)
-				if($file == 'css' or $file == 'js' or $file == 'fonts' or $file == 'img' or $file == 'scss' or $file == 'video' or $file == '.' or $file == '..'){
-					
-				}else{
-					
-					$filmName = str_replace('.php','',$file);
-					$imgDb = mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
-					//echo $filmName;
-					//echo $filmName;
-					while ($result_imgDb = mysqli_fetch_array($imgDb)) {
-						if($result_imgDb['name'] == $filmName){
-							$name = $result_imgDb['name'];
-							$img = $result_imgDb['img'];
-							//echo $img;
-							
-						}
-						
-					}
-					
-					$pop = mysqli_query($conect, "SELECT `name`,`img` FROM `film`  ORDER BY `rang` DESC LIMIT 39");
-					while($result_pop = mysqli_fetch_array($pop)){
-						
-						echo '<div class="newFilms__element">
-								<div class="newFilms__img" id ="'.$result_pop['name'].'" style= "background-image:url('.$result_pop['img'].')" >
-									<a href="film\\'.$result_pop['name'].'.php"><div class="newFilms__hover">
-									<span class="newFilms__button">Смотреть</span>
-									</div></a>
-								</div>
-								<h3 class="newFilms__title">'.$result_pop['name'].'</h3>
-								<p class="newFilms__text">трелер</p>
-								</div>';
+			$pop = mysqli_query($conect, "SELECT `name`,`img` FROM `film`  ORDER BY `rang` DESC LIMIT 39");
+			while($result_pop = mysqli_fetch_array($pop)){
+				echo '<div class="newFilms__element">
+						<div class="newFilms__img" id ="'.$result_pop['name'].'" style= "background-image:url('.$result_pop['img'].')" >
+							<a href="film\\'.$result_pop['name'].'.php"><div class="newFilms__hover">
+							<span class="newFilms__button">Смотреть</span>
+							</div></a>
+						</div>
+						<h3 class="newFilms__title">'.$result_pop['name'].'</h3>
+						<p class="newFilms__text">трелер</p>
+						</div>';
 						
 						
-					}break;
-					
-					
-				}
-				
+			}
 			?>
 		</div>
 	</section>
