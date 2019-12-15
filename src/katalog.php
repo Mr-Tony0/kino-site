@@ -126,7 +126,6 @@
 						$time = mysqli_real_escape_string($conect, trim($_POST['time']));
 						$alphabet = mysqli_real_escape_string($conect, trim($_POST['alphabet']));
 						$input =  mysqli_query($conect,"SELECT `name`,`img`,`style`,`country` FROM `film` ");
-
 						$filmName = mysqli_real_escape_string($conect, trim($_POST['search']));
 						$filmName = preg_replace_callback('~(?<=\\A|[.!?])\\s*?[a-zа-яё]~u', function($m) {
 							return mb_strtoupper($m[0], 'UTF-8');

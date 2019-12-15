@@ -1,6 +1,5 @@
 <?php
 $conect = mysqli_connect('localhost','root','','films');
-
 if (isset($_POST['submit'])){
 	
 	$uploadImg = './film/img/';
@@ -102,21 +101,31 @@ if (isset($_POST['submit'])){
 	
 </head>
 <body>
-<center>
-	<h1>admin panel</h1>
-</center>
-<p>добавить фильм:</p>
-
 <form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
+<?php
+	$conect = mysqli_connect('localhost','root','','films');
 
-<p>установить картинку плеера</p>
-<input type="file" name="loadImg" id="imgFile"/>
+	if (isset($_POST['admin'])){
 		
-<p>установить видеоплеер</p>
-<input type="file" name="loadPlayer"></br></br>
-
-<input type="text" name="name">название</br></br>
-
+		$login = mysqli_real_escape_string($conect, trim($_POST['login']));
+		$pass = mysqli_real_escape_string($conect, trim($_POST['pass']));
+		$autorization = mysqli_query($conect, "SELECT `login`, `password` FROM `admin`");
+		while ($result_autorization = mysqli_fetch_array($autorization)){
+			if($login == $result_autorization['login'] and $pass == $result_autorization['password']){
+				echo '<center>
+	<h2>Добро пожаловать в админ панель</h2>
+	<p>
+		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
+		Заполните все поля что бы добавить фильм на сайт!
+	</p>
+</center>
+<div class="center">
+	<div class="column">
+		<p>название фильма</p>
+		<input class="column__input" type="text" name="name">
+		<p>Укажите жанр фильма страну его выпуска</p>
+		<div class="row">
+			
 			<select  name="janr">
 				<option>Жанры</option>
 				<option>комедия</option>
@@ -169,33 +178,68 @@ if (isset($_POST['submit'])){
 				<option>Швейцария</option>
 				<option>другое...</option>
 			</select>
-
-	<p>тип:</p>
-	<span><input type="radio" name="filmRadio">фильм</span>
-	<span><input type="radio" name="serRadio">сериал</span></br>
-	
-	<p>описание</p>
-	<textarea name="description"></textarea>
-	
-	<p>рейтинг</p>
-	<input type="number" name="rang">
-	
-	<p>дата выхода</p>
+		</div>
+		<p>фильм или сериал</p>
+		<div class="row">
+			<span><input type="radio" name="filmRadio">фильм</span>
+			<span><input type="radio" name="serRadio">сериал</span></br>
+		</div>
+		<p>описание</p>
+		<textarea name="description" style="height:300px; width:500px;"></textarea>
+		
+		<p>рейтинг фильма от 0 до 10 по IMDb</p>
+		<input type="number" name="rang">
+		<div class="row">
+			<div class="column">
+				<p>установите заставку фильма</p>
+				<input type="file" name="loadImg" id="imgFile"/>
+			</div>
+			<div class="column">
+				<p>установить видеоплеер</p>
+				<input type="file" name="loadPlayer"></br></br>
+			</div>
+		</div>
+		<p>дата выхода</p>
 	<input type="date" name="data">
 	
 	<p>длительность в минутах</p>
 	<input type="number" name="time"></br></br></br>
 	
 	<button id="buton" name="submit" type="submit">отправить в ад</button>
-	</form>
-	<script>
-		var imgId = document.getElementById('image');
-		var img = '<?php echo$uploadfile1; ?>';
-		imgId.style.backgroundImage = 'url('+img+')';
-		imgId.style.backgroundSize = '100% 100%';
-		imgId.style.backgroundRepeat = 'no-repeat';
-		imgId.style.backgroundPosition = 'center';
-	</script>
-	<script src="./js/script.js"></script>
+	</div>
+	
+</div>';
+	exit();
+			}else{
+				echo"<p style='background:red; color:white; margin:0;'>Не верный логин или пароль<p></br>";
+				
+
+			}
+		}
+		
+	}
+
+?>	
+<div class="center">
+	<div class="column">
+		<h2 class="column__title">Админ панель</h2>
+		<p class="column__text">введите логин от админ панели</p>
+		<input class="column__input" type = "text" name="login">
+		<p class="column__text">введите пароль от админ панели</p>
+		<input class="column__input" type = "password" name = "pass">
+		<button class="column__button" type="submit" name="admin">войти</button>
+	</div>
+</div>
+</center>
+</form>
+<script>
+	var imgId = document.getElementById('image');
+	var img = '<?php echo$uploadfile1; ?>';
+	imgId.style.backgroundImage = 'url('+img+')';
+	imgId.style.backgroundSize = '100% 100%';
+	imgId.style.backgroundRepeat = 'no-repeat';
+	imgId.style.backgroundPosition = 'center';
+</script>
+<script src="./js/script.js"></script>
 </body>
 </html>
