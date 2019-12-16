@@ -69,7 +69,7 @@ if (isset($_POST['submit'])){
 	$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
 	$date = mysqli_real_escape_string($conect, trim($_POST['data']));
 	$time = mysqli_real_escape_string($conect, trim($_POST['time']));
-	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty(($filmRadio) or !empty($serRadio)) and !empty($description) and !empty($rang) and !empty($date) and !empty($time)){
+	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty(($filmRadio) or !empty($serRadio)) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time)){
 		$query ="SELECT * FROM `film` WHERE name = '$name' AND time = '$time' AND country = '$strana'";
 		$data = mysqli_query($conect, $query);
 		if(mysqli_num_rows($data) == 0){
@@ -188,7 +188,7 @@ if (isset($_POST['submit'])){
 		<textarea name="description" style="height:300px; width:500px;"></textarea>
 		
 		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input type="number" name="rang">
+		<input type="number" name="rang" step="any">
 		<div class="row">
 			<div class="column">
 				<p>установите заставку фильма</p>
