@@ -67,17 +67,15 @@ if (isset($_POST['submit'])){
 	$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
 	$loadImg = $uploadfile1;
 	$loadPlayer = $uploadfile2;
-	$filmRadio = mysqli_real_escape_string($conect, trim($_POST['filmRadio']));
-	$serRadio = mysqli_real_escape_string($conect, trim($_POST['serRadio']));
 	$description = mysqli_real_escape_string($conect, trim($_POST['description']));
 	$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
 	$date = mysqli_real_escape_string($conect, trim($_POST['data']));
 	$time = mysqli_real_escape_string($conect, trim($_POST['time']));
-	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty(($filmRadio) or !empty($serRadio)) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time)){
+	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time)){
 		$query ="SELECT * FROM `film` WHERE name = '$name'";
 		$data = mysqli_query($conect, $query);
 		if(mysqli_num_rows($data) == 0 and $addVideo == 1 and $addImg == 1){
-			$query ="INSERT INTO`film`(name, description, img, video, film, serial, rang, data, style, country, time) VALUES('$name', '$description', '$loadImg', '$loadPlayer', '$filmRadio', '$serRadio', '$rang', '$date', '$janr', '$strana', '$time')";
+			$query ="INSERT INTO`film`(name, description, img, video, rang, data, style, country, time) VALUES('$name', '$description', '$loadImg', '$loadPlayer','$rang', '$date', '$janr', '$strana', '$time')";
 			mysqli_query($conect, $query);
 			//echo'фильм добавлен';
 			mysqli_close($conect);
@@ -143,9 +141,9 @@ if (isset($_POST['submit'])){
 		if($session == 1){ 
 		
 			echo ' <center>
-	<h2>Добро пожаловать в админ панель</h2>
+	<h2>Добро пожаловать на KINgaroo admin.</h2>
 	<p>
-		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
+		Здесь вы можете добавить фильм на сайт KINgaroo.</br>
 		Заполните все поля что бы добавить фильм на сайт!
 	</p>
 </center>
@@ -156,7 +154,7 @@ if (isset($_POST['submit'])){
 		<p>Укажите жанр фильма страну его выпуска</p>
 		<div class="row">
 			
-			<select  name="janr">
+			<select  name="janr" class="row__selsect">
 				<option>Жанры</option>
 				<option>комедия</option>
 				<option>триллер</option>
@@ -177,7 +175,7 @@ if (isset($_POST['submit'])){
 				<option>детектив</option>
 				<option>аниме</option>
 			</select>
-			<select  name="strana">
+			<select  name="strana" class="row__selsect">
 				<option>Страны</option>
 				<option>США</option>
 				<option>СССР</option>
@@ -209,33 +207,28 @@ if (isset($_POST['submit'])){
 				<option>другое...</option>
 			</select>
 		</div>
-		<p>фильм или сериал</p>
-		<div class="row">
-			<span><input type="radio" name="filmRadio">фильм</span>
-			<span><input type="radio" name="serRadio">сериал</span></br>
-		</div>
 		<p>описание</p>
-		<textarea name="description" style="height:300px; width:500px;"></textarea>
+		<textarea class="column__textarea" name="description"></textarea>
 		
 		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input type="number" name="rang" step="any" >
+		<input class="column__input" type="number" name="rang" step="any" >
 		<div class="row">
 			<div class="column">
 				<p>установите заставку фильма</p>
-				<input type="file" name="loadImg" id="imgFile"/>
+				<input class="column__file" type="file" name="loadImg" id="imgFile"/>
 			</div>
 			<div class="column">
 				<p>установить видеоплеер</p>
-				<input type="file" name="loadPlayer"></br></br>
+				<input class="column__file" type="file" name="loadPlayer"></br></br>
 			</div>
 		</div>
 		<p>дата выхода</p>
-	<input type="date" name="data">
+		<input class="column__input" type="date" name="data">
 	
-	<p>длительность в минутах</p>
-	<input type="number" name="time"></br></br></br>
+		<p>длительность в минутах</p>
+		<input class="column__input" type="number" name="time"></br></br></br>
 	
-	<button id="buton" name="submit" type="submit">отправить в ад</button>
+		<button class="column__button" id="buton" name="submit" type="submit">Добавить</button>
 	</div>
 	
 </div>';
@@ -255,9 +248,9 @@ if (isset($_POST['submit'])){
 	}if($session == 1){ 
 		
 			echo ' <center>
-	<h2>Добро пожаловать в админ панель</h2>
+	<h2>Добро пожаловать на KINgaroo admin.</h2>
 	<p>
-		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
+		Здесь вы можете добавить фильм на сайт KINgaroo.</br>
 		Заполните все поля что бы добавить фильм на сайт!
 	</p>
 </center>
@@ -268,7 +261,7 @@ if (isset($_POST['submit'])){
 		<p>Укажите жанр фильма страну его выпуска</p>
 		<div class="row">
 			
-			<select  name="janr">
+			<select  name="janr" class="row__selsect">
 				<option>Жанры</option>
 				<option>комедия</option>
 				<option>триллер</option>
@@ -289,7 +282,7 @@ if (isset($_POST['submit'])){
 				<option>детектив</option>
 				<option>аниме</option>
 			</select>
-			<select  name="strana">
+			<select  name="strana" class="row__selsect">
 				<option>Страны</option>
 				<option>США</option>
 				<option>СССР</option>
@@ -321,164 +314,33 @@ if (isset($_POST['submit'])){
 				<option>другое...</option>
 			</select>
 		</div>
-		<p>фильм или сериал</p>
-		<div class="row">
-			<span><input type="radio" name="filmRadio">фильм</span>
-			<span><input type="radio" name="serRadio">сериал</span></br>
-		</div>
 		<p>описание</p>
-		<textarea name="description" style="height:300px; width:500px;"></textarea>
+		<textarea class="column__textearea" name="description"></textarea>
 		
 		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input type="number" name="rang" step="any">
+		<input class="column__input" type="number" name="rang" step="any" >
 		<div class="row">
 			<div class="column">
 				<p>установите заставку фильма</p>
-				<input type="file" name="loadImg" id="imgFile"/>
+				<input class="column__file" type="file" name="loadImg" id="imgFile"/>
 			</div>
 			<div class="column">
 				<p>установить видеоплеер</p>
-				<input type="file" name="loadPlayer"></br></br>
+				<input class="column__file" type="file" name="loadPlayer"></br></br>
 			</div>
 		</div>
 		<p>дата выхода</p>
-	<input type="date" name="data">
+		<input class="column__input" type="date" name="data">
 	
-	<p>длительность в минутах</p>
-	<input type="number" name="time"></br></br></br>
+		<p>длительность в минутах</p>
+		<input class="column__input" type="number" name="time"></br></br></br>
 	
-	<button id="buton" name="submit" type="submit">отправить в ад</button>
+		<button class="column__button" id="buton" name="submit" type="submit">Добавить</button>
 	</div>
 	
 </div>';
 	exit();}
-/*
-				echo ' <center>
-	<h2>Добро пожаловать в админ панель</h2>
-	<p>
-		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
-		Заполните все поля что бы добавить фильм на сайт!
-	</p>
-</center>
-<div class="center">
-	<div class="column">
-		<p>название фильма</p>
-		<input class="column__input" type="text" name="name">
-		<p>Укажите жанр фильма страну его выпуска</p>
-		<div class="row">
-			
-			<select  name="janr">
-				<option>Жанры</option>
-				<option>комедия</option>
-				<option>триллер</option>
-				<option>боевик</option>
-				<option>мелодрамма</option>
-				<option>криминал</option>
-				<option>драма</option>
-				<option>ужасы</option>
-				<option>приключения</option>
-				<option>семейные</option>
-				<option>фантастика</option>
-				<option>документальный</option>
-				<option>военный</option>
-				<option>исторический</option>
-				<option>биография</option>
-				<option>вестерн</option>
-				<option>мкльтфильм</option>
-				<option>детектив</option>
-				<option>аниме</option>
-			</select>
-			<select  name="strana">
-				<option>Страны</option>
-				<option>США</option>
-				<option>СССР</option>
-				<option>Франция</option>
-				<option>Великобритания</option>
-				<option>Беларусь</option>
-				<option>Россия</option>
-				<option>Германия</option>
-				<option>Гонконг</option>
-				<option>Индия</option>
-				<option>Испания</option>
-				<option>Италия</option>
-				<option>Казахстан</option>
-				<option>Канада</option>
-				<option>Украина</option>
-				<option>Япония</option>
-				<option>Австралия</option>
-				<option>Бельгия</option>
-				<option>Польша</option>
-				<option>Китай</option>
-				<option>Швеция</option>
-				<option>Дания</option>
-				<option>Южная Корея</option>
-				<option>Австрия</option>
-				<option>Израиль</option>
-				<option>Турция</option>
-				<option>Колумбия</option>
-				<option>Швейцария</option>
-				<option>другое...</option>
-			</select>
-		</div>
-		<p>фильм или сериал</p>
-		<div class="row">
-			<span><input type="radio" name="filmRadio">фильм</span>
-			<span><input type="radio" name="serRadio">сериал</span></br>
-		</div>
-		<p>описание</p>
-		<textarea name="description" style="height:300px; width:500px;"></textarea>
-		
-		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input type="number" name="rang" step="any">
-		<div class="row">
-			<div class="column">
-				<p>установите заставку фильма</p>
-				<input type="file" name="loadImg" id="imgFile"/>
-			</div>
-			<div class="column">
-				<p>установить видеоплеер</p>
-				<input type="file" name="loadPlayer"></br></br>
-			</div>
-		</div>
-		<p>дата выхода</p>
-	<input type="date" name="data">
-	
-	<p>длительность в минутах</p>
-	<input type="number" name="time"></br></br></br>
-	
-	<button id="buton" name="submit" type="submit">отправить в ад</button>
-	</div>
-	
-</div>';
-				exit();
-			}else{
-				echo'<p style="background:red; color:white; margin:0;">Не верный логин или пароль<p></br>
-					<div class="column">
-					<h2 class="column__title">Админ панель</h2>
-					<p class="column__text">введите логин от админ панели</p>
-					<input class="column__input" type = "text" name="login">
-					<p class="column__text">введите пароль от админ панели</p>
-					<input class="column__input" type = "password" name = "pass">
-					<button class="column__button" type="submit" name="admin">войти</button>
-					</div>
-				';
-				
 
-			}
-		}
-		
-	}else{
-		echo '<div class="column">
-		<h2 class="column__title">Админ панель</h2>
-		<p class="column__text">введите логин от админ панели</p>
-		<input class="column__input" type = "text" name="login">
-		<p class="column__text">введите пароль от админ панели</p>
-		<input class="column__input" type = "password" name = "pass">
-		<button class="column__button" type="submit" name="admin">войти</button>
-		</div>'; 
-		exit();
-	}
-*/
 ?>	
 </center>
 </form>

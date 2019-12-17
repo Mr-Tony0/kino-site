@@ -355,28 +355,29 @@ header,.navigation{
 	}
 }
 .center-block{
-	background:$Dark;
-	display:flex;
-	width:90%;
-	justify-content:center;
-	margin:0.5%;
+	display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: 0.5%;
+    background: radial-gradient(#2f4f4f,rgba(47,79,79,0.8), transparent);
+    border-radius: 80px;
 	&__text{
-		color:white;
+		color:$Light;
 	}
 }
 .key{
 	&__text{
-		color:white;
+		color:$Light;
 	}
 }
 .info{
-	background:$blockColor;
-	width:90%;
-	display:flex;
-	justify-content:space-around;
-	align-items:center;
+	background:#2f4f4f;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 	&__text{
-		color:white;
+		color:$Light;
 	}
 }
 .publicity{	
@@ -429,6 +430,7 @@ header,.navigation{
 		color:$elements;
 	}
 }
+
 @media screen and (min-width: 850px) and (max-width: 1100px){
 	.headerCenter{
 		width:90%;

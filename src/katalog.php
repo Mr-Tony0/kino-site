@@ -144,16 +144,10 @@
 									<h3 class="newFilms__title">'.$result_sear['name'].'</h3>
 									<p class="newFilms__text">трелер</p>
 									</div>';
-							}else{
-								if($filmName != ''){
-									echo '
-									<div class="newFilms__element">
-										<<h2>Не удалось найти фильм по данным критериям поиска</h2>
-										<p>Для коректного поиска необходимо ввести полное название фильма!</p>
-									</div>';
-								}
 							}
 						}
+						
+						
 						
 						while ($result_input = mysqli_fetch_array($input)){
 							

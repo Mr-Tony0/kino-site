@@ -13,7 +13,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 	<meta name = "viewport" content = "width=device-width, initial-scale=1.0">
 	
 </head>
-<body>
+<body id="body">
 	<form method="GET" action='link.php' enctype="multipart/form-data">
 	<header>
 		<div class="headerCenter">
@@ -55,7 +55,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 	
 		<div class="nameSection">
 			<center>
-				<h2 class="nameSection__title"><?php echo $resultSearch['name']; ?></h2>
+				<h2 class="nameSection__title lightColor"><?php echo $resultSearch['name']; ?></h2>
 				<div class="nameSection__line">
 				</div>
 			</center>
@@ -154,23 +154,23 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
-/* 
-удаление кнопки
-
-	var delet = '<?php echo $delet ?>'
-	if(delet == 'false'){
-		var del = document.getElementById("delete");
-		del.parentNode.removeChild(del);
-	}else{
-		return false;
-	}
-*/	
 	var imgId = document.getElementById('image');
 	var img = '<?php echo '.'.$resultSearch['img']; ?>';
 	imgId.style.backgroundImage = 'url('+img+')';
 	imgId.style.backgroundSize = '100% 100%';
 	imgId.style.backgroundRepeat = 'no-repeat';
 	imgId.style.backgroundPosition = 'center';
+	
+	var img = new Array();
+	img[0] = './img/img1.png';
+	img[1] = './img/img2.png';
+	img[2] = './img/img3.png';
+	var rand = Math.random();
+	rand = rand *3;
+	rand = Math.floor(rand);
+	rand = img[rand];
+	var body = document.getElementById('body');
+	body.style.backgroundImage = 'url('+rand +')';
 </script>
 <script src="./js/main.js"></script>
 </body>

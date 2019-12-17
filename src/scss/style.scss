@@ -351,10 +351,12 @@ header,.navigation{
 	}
 }
 .center-block{
-	display:flex;
-	width:90%;
-	justify-content:center;
-	margin:2%;
+	display: flex;
+    width: 90%;
+    justify-content: center;
+    margin: 0.5%;
+    background: radial-gradient(#2f4f4f,#2f4f4f, transparent);
+    border-radius: 80px;
 	&__text{
 		color:white;
 	}
@@ -365,12 +367,13 @@ header,.navigation{
 	}
 }
 .info{
-	width:60%;
-	display:flex;
-	justify-content:space-around;
-	align-items:center;
+	background:#2f4f4f;
+    width: 90%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 	&__text{
-		color:white;
+		color:$Light;
 	}
 }
 .publicity{	
@@ -427,23 +430,39 @@ header,.navigation{
 		border-radius:6px;
 		height:20px;
 		width:200px;
+		color:$Dark;
+	}
+	&__textarea{
+		border: 2px solid $elements;
+		border-radius:6px;
+		color:$Dark;
+		width:280px;
+		height:150px;
 	}
 	&__button{
 		margin-top:2%;
 		border: 2px solid $elements;
 		border-radius:6px;
-		height:30px;
-		width:100px;
+		height:40px;
+		width:120px;
 		background:$elements;
 		color:$Dark;
+		font-family:$title;
 	}
 	&__title{
 		font-family:$bigText;
 	}
+	&__file{
+		
+	}
 }
 .row{
 	display:flex;
-	//margin:1%;
+	&__selsect{
+		background:$blockColor;
+		color:$elements;
+		border:2px solid $elements;
+	}
 }
 .center{
 	display:flex;
@@ -459,6 +478,7 @@ header,.navigation{
 		color:$elements;
 	}
 }
+
 @media screen and (min-width: 850px) and (max-width: 1100px){
 	.headerCenter{
 		width:90%;
