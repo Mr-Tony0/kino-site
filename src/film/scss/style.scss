@@ -423,6 +423,12 @@ header,.navigation{
 		color:$elements;
 	}
 }
+.error{
+	height:500px;
+	&__title{
+		color:$elements;
+	}
+}
 @media screen and (min-width: 850px) and (max-width: 1100px){
 	.headerCenter{
 		width:90%;

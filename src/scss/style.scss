@@ -451,6 +451,14 @@ header,.navigation{
 	flex-direction:column;
 	
 }
+.error{
+	padding-left:20%;
+	height:600px;
+	&__title{
+		margin-top:10%;
+		color:$elements;
+	}
+}
 @media screen and (min-width: 850px) and (max-width: 1100px){
 	.headerCenter{
 		width:90%;

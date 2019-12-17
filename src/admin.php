@@ -218,7 +218,7 @@ if (isset($_POST['submit'])){
 		<textarea name="description" style="height:300px; width:500px;"></textarea>
 		
 		<p>рейтинг фильма от 0 до 10 по IMDb</p>
-		<input type="number" name="rang" step="any">
+		<input type="number" name="rang" step="any" >
 		<div class="row">
 			<div class="column">
 				<p>установите заставку фильма</p>

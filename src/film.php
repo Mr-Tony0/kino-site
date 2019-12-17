@@ -29,9 +29,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 					<li class="headerCenter__li"><a class="headerCenter__link" href="../index.php">Популярное</a></li>
 				</ul>
 			</div>
-				<div class="search">
-					<img class="search__img" id="clickSearch" src="./img/search.png">
-				</div>
+				
 			</div>
 			<div class="headerCenter__clickBlock mobile">
 				<div class="headerCenter__click" id="click">
@@ -41,12 +39,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 		</div>
 		
 	</header>
-	<div class="blockSearch"id = "oneSearch">
-		<div class="blockSearch__element">
-			<input class="blockSearch__input" type="text" name="search">
-			<button type="submit" name="go" class="blockSearch__button">Найти</button>
-		</div>
-	</div>
+	
 	<nav class="navigation">
 		<ul class="navigation__ul">
 			<li class="navigation__li"><a class="navigation__link" href="">Главная</a></li>
@@ -54,12 +47,6 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 			<li class="navigation__li"><a class="navigation__link" href="">Новинки</a></li>
 			<li class="navigation__li"><a class="navigation__link" href="">Популярное</a></li>
 		</ul>
-		<div class="blockSearch" id = "twoSearch">
-			<div class="blockSearch__element">
-				<input class="blockSearch__input" type="text" name="search">
-				<button type="submit" name="go" class="blockSearch__button">Найти</button>
-			</div>
-		</div>
 	</nav>
 	
 	<section class="one-general">
