@@ -1,6 +1,10 @@
 <?php
 $conect = mysqli_connect('localhost','root','','films');
-if (isset($_POST['submit'])){
+
+
+
+if (isset($_POST['submit'])){	
+	$session = 1;
 	
 	$uploadImg = './film/img/';
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
@@ -12,32 +16,32 @@ if (isset($_POST['submit'])){
 		if (move_uploaded_file($_FILES['loadImg']['tmp_name'], $uploadfile1)){
 			$size = getimagesize($uploadfile1); 
 			if ($size[0] < 5001 && $size[1]<15001){
-				//echo 'картинка добавлена';	
+				$addImg = 1;
 			}else{
-				echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
+				echo '<p style="background:red; color:white; margin:0;">Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)</p>';
 				unlink($uploadfile1); 
 			} 
 		} else {
-			echo "Файл не загружен, вернитеcь и попробуйте еще раз";
+			echo '<p style="background:red; color:white; margin:0;">изображение не загружено попробуйте снова!</p>';
 		} 
 	} else { 
-	echo "Размер файла не должен превышать 1.5мб";
+	echo '<p style="background:red; color:white; margin:0;">Размер или тип изображения не коректны попрбуйте выбрать другой файл!</p>';
 	}
 	
 	if(($_FILES['loadPlayer']['type'] == 'video/mp4' || $_FILES['loadPlayer']['type'] == 'video/3GP' || $_FILES['loadPlayer']['type'] == 'video/avi' || $_FILES['loadPlayer']['type'] == 'video/mkw' || $_FILES['loadPlayer']['type'] == 'video/mov' || $_FILES['loadPlayer']['type'] == 'video/wma') && ($_FILES['loadPlayer']['size'] != 0 and $_FILES['loadImg']['size']<=1512000000)){ 
 			if (move_uploaded_file($_FILES['loadPlayer']['tmp_name'], $uploadfile2)){
 				$size = getimagesize($uploadfile2); 
 				if ($size[0] < 5001 && $size[1]<15001){ 
-					//echo 'видео добавлена';	
+					$addVideo = 1;	
 				}else{
-					echo "Загружаемое изображение превышает допустимые нормы (ширина не более - 500; высота не более 1500)"; 
+					echo '<p style="background:red; color:white; margin:0;">Загружаемое видео превышает допустимые нормы (ширина не более - 500; высота не более 1500)</p>';
 					unlink($uploadfile2); 
 				} 
 			} else {
-				echo "Файл не загружен, вернитеcь и попробуйте еще раз";
+				echo '<p style="background:red; color:white; margin:0;">видео не загружено попробуйте снова!</p>';
 			} 
 		} else { 
-		echo "Размер файла не должен превышать 1.5гб";
+		echo '<p style="background:red; color:white; margin:0;">Размер или тип видео не коректны попрбуйте выбрать другой файл!</p>';
 		}
 	
 		/*
@@ -70,9 +74,9 @@ if (isset($_POST['submit'])){
 	$date = mysqli_real_escape_string($conect, trim($_POST['data']));
 	$time = mysqli_real_escape_string($conect, trim($_POST['time']));
 	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty(($filmRadio) or !empty($serRadio)) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time)){
-		$query ="SELECT * FROM `film` WHERE name = '$name' AND time = '$time' AND country = '$strana'";
+		$query ="SELECT * FROM `film` WHERE name = '$name'";
 		$data = mysqli_query($conect, $query);
-		if(mysqli_num_rows($data) == 0){
+		if(mysqli_num_rows($data) == 0 and $addVideo == 1 and $addImg == 1){
 			$query ="INSERT INTO`film`(name, description, img, video, film, serial, rang, data, style, country, time) VALUES('$name', '$description', '$loadImg', '$loadPlayer', '$filmRadio', '$serRadio', '$rang', '$date', '$janr', '$strana', '$time')";
 			mysqli_query($conect, $query);
 			//echo'фильм добавлен';
@@ -81,10 +85,17 @@ if (isset($_POST['submit'])){
 			exit();
 		}
 		else{
-			echo 'такой фильм существует ';
+			if(mysqli_num_rows($data) != 0){
+				echo '<p style="background:red; color:white; margin:0;">Такой фильм существует!</p>';
+			}else{
+				echo '<p style="background:red; color:white; margin:0;">файл не загружен!</p>';
+			}
+			
+			
 		}
 	}else{
-		echo'поля не заполнены';
+		echo'<p style="background:red; color:white; margin:0;">Поля заполненны не коректно!</p>';
+		
 	}
 }
 
@@ -104,7 +115,6 @@ if (isset($_POST['submit'])){
 <form method="POST" action=<?php echo $_SERVER['PHP_SELF'];?> enctype="multipart/form-data">
 <?php
 	$conect = mysqli_connect('localhost','root','','films');
-
 	if (isset($_POST['admin'])){
 		
 		$login = mysqli_real_escape_string($conect, trim($_POST['login']));
@@ -112,7 +122,27 @@ if (isset($_POST['submit'])){
 		$autorization = mysqli_query($conect, "SELECT `login`, `password` FROM `admin`");
 		while ($result_autorization = mysqli_fetch_array($autorization)){
 			if($login == $result_autorization['login'] and $pass == $result_autorization['password']){
-				echo '<center>
+				
+				$session = 1;
+				
+			}else{
+				echo'<p style="background:red; color:white; margin:0;">Не верный логин или пароль<p></br>
+					<div class="column">
+					<h2 class="column__title">Админ панель</h2>
+					<p class="column__text">введите логин от админ панели</p>
+					<input class="column__input" type = "text" name="login">
+					<p class="column__text">введите пароль от админ панели</p>
+					<input class="column__input" type = "password" name = "pass">
+					<button class="column__button" type="submit" name="admin">войти</button>
+					</div>
+				';
+				exit();
+			}
+		}
+	}else{
+		if($session == 1){ 
+		
+			echo ' <center>
 	<h2>Добро пожаловать в админ панель</h2>
 	<p>
 		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
@@ -209,37 +239,249 @@ if (isset($_POST['submit'])){
 	</div>
 	
 </div>';
-	exit();
+				exit();
+	}else{
+			echo'
+					<div class="column">
+					<h2 class="column__title">Админ панель</h2>
+					<p class="column__text">введите логин от админ панели</p>
+					<input class="column__input" type = "text" name="login">
+					<p class="column__text">введите пароль от админ панели</p>
+					<input class="column__input" type = "password" name = "pass">
+					<button class="column__button" type="submit" name="admin">войти</button>
+					</div>
+				';exit();
+	}
+	}if($session == 1){ 
+		
+			echo ' <center>
+	<h2>Добро пожаловать в админ панель</h2>
+	<p>
+		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
+		Заполните все поля что бы добавить фильм на сайт!
+	</p>
+</center>
+<div class="center">
+	<div class="column">
+		<p>название фильма</p>
+		<input class="column__input" type="text" name="name">
+		<p>Укажите жанр фильма страну его выпуска</p>
+		<div class="row">
+			
+			<select  name="janr">
+				<option>Жанры</option>
+				<option>комедия</option>
+				<option>триллер</option>
+				<option>боевик</option>
+				<option>мелодрамма</option>
+				<option>криминал</option>
+				<option>драма</option>
+				<option>ужасы</option>
+				<option>приключения</option>
+				<option>семейные</option>
+				<option>фантастика</option>
+				<option>документальный</option>
+				<option>военный</option>
+				<option>исторический</option>
+				<option>биография</option>
+				<option>вестерн</option>
+				<option>мкльтфильм</option>
+				<option>детектив</option>
+				<option>аниме</option>
+			</select>
+			<select  name="strana">
+				<option>Страны</option>
+				<option>США</option>
+				<option>СССР</option>
+				<option>Франция</option>
+				<option>Великобритания</option>
+				<option>Беларусь</option>
+				<option>Россия</option>
+				<option>Германия</option>
+				<option>Гонконг</option>
+				<option>Индия</option>
+				<option>Испания</option>
+				<option>Италия</option>
+				<option>Казахстан</option>
+				<option>Канада</option>
+				<option>Украина</option>
+				<option>Япония</option>
+				<option>Австралия</option>
+				<option>Бельгия</option>
+				<option>Польша</option>
+				<option>Китай</option>
+				<option>Швеция</option>
+				<option>Дания</option>
+				<option>Южная Корея</option>
+				<option>Австрия</option>
+				<option>Израиль</option>
+				<option>Турция</option>
+				<option>Колумбия</option>
+				<option>Швейцария</option>
+				<option>другое...</option>
+			</select>
+		</div>
+		<p>фильм или сериал</p>
+		<div class="row">
+			<span><input type="radio" name="filmRadio">фильм</span>
+			<span><input type="radio" name="serRadio">сериал</span></br>
+		</div>
+		<p>описание</p>
+		<textarea name="description" style="height:300px; width:500px;"></textarea>
+		
+		<p>рейтинг фильма от 0 до 10 по IMDb</p>
+		<input type="number" name="rang" step="any">
+		<div class="row">
+			<div class="column">
+				<p>установите заставку фильма</p>
+				<input type="file" name="loadImg" id="imgFile"/>
+			</div>
+			<div class="column">
+				<p>установить видеоплеер</p>
+				<input type="file" name="loadPlayer"></br></br>
+			</div>
+		</div>
+		<p>дата выхода</p>
+	<input type="date" name="data">
+	
+	<p>длительность в минутах</p>
+	<input type="number" name="time"></br></br></br>
+	
+	<button id="buton" name="submit" type="submit">отправить в ад</button>
+	</div>
+	
+</div>';
+	exit();}
+/*
+				echo ' <center>
+	<h2>Добро пожаловать в админ панель</h2>
+	<p>
+		Данная панель предназначена для добавления фильмов на сайт KINgaroo.</br>
+		Заполните все поля что бы добавить фильм на сайт!
+	</p>
+</center>
+<div class="center">
+	<div class="column">
+		<p>название фильма</p>
+		<input class="column__input" type="text" name="name">
+		<p>Укажите жанр фильма страну его выпуска</p>
+		<div class="row">
+			
+			<select  name="janr">
+				<option>Жанры</option>
+				<option>комедия</option>
+				<option>триллер</option>
+				<option>боевик</option>
+				<option>мелодрамма</option>
+				<option>криминал</option>
+				<option>драма</option>
+				<option>ужасы</option>
+				<option>приключения</option>
+				<option>семейные</option>
+				<option>фантастика</option>
+				<option>документальный</option>
+				<option>военный</option>
+				<option>исторический</option>
+				<option>биография</option>
+				<option>вестерн</option>
+				<option>мкльтфильм</option>
+				<option>детектив</option>
+				<option>аниме</option>
+			</select>
+			<select  name="strana">
+				<option>Страны</option>
+				<option>США</option>
+				<option>СССР</option>
+				<option>Франция</option>
+				<option>Великобритания</option>
+				<option>Беларусь</option>
+				<option>Россия</option>
+				<option>Германия</option>
+				<option>Гонконг</option>
+				<option>Индия</option>
+				<option>Испания</option>
+				<option>Италия</option>
+				<option>Казахстан</option>
+				<option>Канада</option>
+				<option>Украина</option>
+				<option>Япония</option>
+				<option>Австралия</option>
+				<option>Бельгия</option>
+				<option>Польша</option>
+				<option>Китай</option>
+				<option>Швеция</option>
+				<option>Дания</option>
+				<option>Южная Корея</option>
+				<option>Австрия</option>
+				<option>Израиль</option>
+				<option>Турция</option>
+				<option>Колумбия</option>
+				<option>Швейцария</option>
+				<option>другое...</option>
+			</select>
+		</div>
+		<p>фильм или сериал</p>
+		<div class="row">
+			<span><input type="radio" name="filmRadio">фильм</span>
+			<span><input type="radio" name="serRadio">сериал</span></br>
+		</div>
+		<p>описание</p>
+		<textarea name="description" style="height:300px; width:500px;"></textarea>
+		
+		<p>рейтинг фильма от 0 до 10 по IMDb</p>
+		<input type="number" name="rang" step="any">
+		<div class="row">
+			<div class="column">
+				<p>установите заставку фильма</p>
+				<input type="file" name="loadImg" id="imgFile"/>
+			</div>
+			<div class="column">
+				<p>установить видеоплеер</p>
+				<input type="file" name="loadPlayer"></br></br>
+			</div>
+		</div>
+		<p>дата выхода</p>
+	<input type="date" name="data">
+	
+	<p>длительность в минутах</p>
+	<input type="number" name="time"></br></br></br>
+	
+	<button id="buton" name="submit" type="submit">отправить в ад</button>
+	</div>
+	
+</div>';
+				exit();
 			}else{
-				echo"<p style='background:red; color:white; margin:0;'>Не верный логин или пароль<p></br>";
+				echo'<p style="background:red; color:white; margin:0;">Не верный логин или пароль<p></br>
+					<div class="column">
+					<h2 class="column__title">Админ панель</h2>
+					<p class="column__text">введите логин от админ панели</p>
+					<input class="column__input" type = "text" name="login">
+					<p class="column__text">введите пароль от админ панели</p>
+					<input class="column__input" type = "password" name = "pass">
+					<button class="column__button" type="submit" name="admin">войти</button>
+					</div>
+				';
 				
 
 			}
 		}
 		
-	}
-
-?>	
-<div class="center">
-	<div class="column">
+	}else{
+		echo '<div class="column">
 		<h2 class="column__title">Админ панель</h2>
 		<p class="column__text">введите логин от админ панели</p>
 		<input class="column__input" type = "text" name="login">
 		<p class="column__text">введите пароль от админ панели</p>
 		<input class="column__input" type = "password" name = "pass">
 		<button class="column__button" type="submit" name="admin">войти</button>
-	</div>
-</div>
+		</div>'; 
+		exit();
+	}
+*/
+?>	
 </center>
 </form>
-<script>
-	var imgId = document.getElementById('image');
-	var img = '<?php echo$uploadfile1; ?>';
-	imgId.style.backgroundImage = 'url('+img+')';
-	imgId.style.backgroundSize = '100% 100%';
-	imgId.style.backgroundRepeat = 'no-repeat';
-	imgId.style.backgroundPosition = 'center';
-</script>
 <script src="./js/script.js"></script>
 </body>
 </html>
