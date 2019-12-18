@@ -62,7 +62,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 		</div>
 		
 		
-		<div class="center-block">
+		<div class="one-general__center-block center-block">
 		<!--превью картинка-->
 			<div class="previe" id="image">
 			</div>
@@ -78,7 +78,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 		</div>
 	</section>
 	<section class="two-general">
-		<div class="center-block">
+		<div class="two-general__center-block center-block">
 			<aside class="publicity">
 				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
 				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
