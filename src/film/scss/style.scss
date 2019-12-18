@@ -360,17 +360,15 @@ header,.navigation{
     justify-content: center;
     margin: 0.5%;
     background: radial-gradient(#2f4f4f,rgba(47,79,79,0.8), transparent);
+	box-shadow: 0 0 5px 0px;
     border-radius: 80px;
 	&__text{
 		color:$Light;
 	}
 }
-.key{
-	&__text{
-		color:$Light;
-	}
-}
+
 .info{
+	box-shadow: 0 0 5px 2px;
 	background:#2f4f4f;
     width: 90%;
     display: flex;
@@ -386,6 +384,7 @@ header,.navigation{
 	width:220px;
 	height:560px;
 	max-width:100%;
+	display:flex;
 }
 .two-general{
 	display:flex;
@@ -396,6 +395,8 @@ header,.navigation{
 	display:flex;
 	justify-content:center;
 	align-items:center;
+	margin-top:2%;
+	margin-bottom:2%;
 }
 .arround-block{
 	display:flex;

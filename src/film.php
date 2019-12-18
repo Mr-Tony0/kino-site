@@ -80,7 +80,8 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 	<section class="two-general">
 		<div class="center-block">
 			<aside class="publicity">
-				реклама
+				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
+				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
 			</aside>
 			
 			<div class="previe" id="play">
@@ -94,7 +95,8 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 			</div>
 			
 			<aside class="publicity">
-				реклама
+				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
+				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>			
 			</aside>
 		</div>
 	</section>
@@ -123,8 +125,12 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 		
 	</section>
 	<section class="foo-general">
-		<div class="arround-block">
-			реклама
+		<div class="arround-block arroundColor">
+			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
+			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
+			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
+			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
+			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
 		</div>
 	</section>
 	<footer class="footer">
