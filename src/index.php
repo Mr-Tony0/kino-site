@@ -100,7 +100,7 @@
 		<div class="newFilms">
 			<?php
 				$conect = mysqli_connect('localhost','root','','films');
-				$date = mysqli_query($conect, "SELECT `data`,`name`,`img` FROM `film`  ORDER BY `data` DESC LIMIT 39");
+				$date = mysqli_query($conect, "SELECT `data`,`name`,`img`, `style` FROM `film`  ORDER BY `data` DESC LIMIT 39");
 				while($result_date = mysqli_fetch_array($date)){
 					echo '<div class="newFilms__element">
 							<div class="newFilms__img" id ="'.$result_date['name'].'" style= "background-image:url('.$result_date['img'].')" >
@@ -109,7 +109,7 @@
 								</div></a>
 							</div>
 							<h3 class="newFilms__title">'.$result_date['name'].'</h3>
-							<p class="newFilms__text">трелер</p>
+							<p class="newFilms__text">'.$result_date['style'].'</p>
 							</div>';	
 				}
 					
@@ -128,7 +128,7 @@
 		<div class="newFilms">
 			<?php
 			$conect = mysqli_connect('localhost','root','','films');
-			$pop = mysqli_query($conect, "SELECT `name`,`img` FROM `film`  ORDER BY `rang` DESC LIMIT 39");
+			$pop = mysqli_query($conect, "SELECT `name`,`img`,`style` FROM `film`  ORDER BY `rang` DESC LIMIT 39");
 			while($result_pop = mysqli_fetch_array($pop)){
 				echo '<div class="newFilms__element">
 						<div class="newFilms__img" id ="'.$result_pop['name'].'" style= "background-image:url('.$result_pop['img'].')" >
@@ -137,7 +137,7 @@
 							</div></a>
 						</div>
 						<h3 class="newFilms__title">'.$result_pop['name'].'</h3>
-						<p class="newFilms__text">трелер</p>
+						<p class="newFilms__text">'.$result_pop['style'].'</p>
 						</div>';
 						
 						

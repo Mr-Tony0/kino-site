@@ -1,5 +1,5 @@
 <?php
-include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
+include('data.php');
 
 ?>
 
@@ -84,14 +84,14 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
 			</aside>
 			
-			<div class="previe" id="play">
-				<div class="media-wrapper">
-					<video id="player1" width="840" height="460" style="max-width:100%;" preload="none" controls playsinline webkit-playsinline>
+			<div class="player" id="play">
+				
+					<video class="player__video" preload="none" controls playsinline webkit-playsinline>
 						<?php echo '<source src=".' . htmlspecialchars($resultSearch['video']) . '">';?>
 						<track srclang="en" kind="subtitles" src="mediaelement.vtt">
 						<track srclang="en" kind="chapters" src="chapters.vtt">
 					</video>
-				</div>  
+				
 			</div>
 			
 			<aside class="publicity">

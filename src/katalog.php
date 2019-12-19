@@ -131,7 +131,7 @@
 							return mb_strtoupper($m[0], 'UTF-8');
 						}, $filmName);
 					
-						$sear =  mysqli_query($conect,"SELECT `img`,`name` FROM `film`");
+						$sear =  mysqli_query($conect,"SELECT `img`,`name`,`style` FROM `film`");
 						while ($result_sear = mysqli_fetch_array($sear)){
 							//echo $filmName;
 							if($filmName == $result_sear['name']){
@@ -142,7 +142,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_sear['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_sear['style'].'</p>
 									</div>';
 							}
 						}
@@ -160,7 +160,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_input['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_input['style'].'</p>
 									</div>';
 								
 							}if(($janr =='Жанры' and $strana == 'Страны') and $new != 'on' and $rang != 'on' and $time != 'on' and $alphabet != 'on' and $filmName ==''){
@@ -171,7 +171,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_input['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_input['style'].'</p>
 									</div>';
 							}
 							
@@ -191,7 +191,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_sort['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_sort['style'].'</p>
 									</div>';
 							}if($janr =='Жанры' and $strana == 'Страны' and $filmName ==''){
 							echo '<div class="newFilms__element">
@@ -201,7 +201,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_sort['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_sort['style'].'</p>
 									</div>';
 									
 							}
@@ -220,7 +220,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_now['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_now['style'].'</p>
 									</div>';
 							}if(($janr =='Жанры' and $strana == 'Страны' and $filmName =='')){
 							echo '<div class="newFilms__element">
@@ -230,7 +230,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_now['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_now['style'].'</p>
 									</div>';
 									
 							}
@@ -246,7 +246,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_short['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_short['style'].'</p>
 									</div>';
 							}if($janr =='Жанры' and $strana == 'Страны' and $filmName ==''){
 							echo '<div class="newFilms__element">
@@ -256,7 +256,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_short['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_short['style'].'</p>
 									</div>';
 									
 							}
@@ -272,7 +272,7 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_alph['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_alph['style'].'</p>
 									</div>';
 							}if(($janr =='Жанры' and $strana == 'Страны' and $filmName =='')){
 							echo '<div class="newFilms__element">
@@ -282,14 +282,14 @@
 										</div></a>
 									</div>
 									<h3 class="newFilms__title">'.$result_alph['name'].'</h3>
-									<p class="newFilms__text">трелер</p>
+									<p class="newFilms__text">'.$result_alph['style'].'</p>
 									</div>';
 									
 							}
 						}
 					}
 				}else{
-						$standart =  mysqli_query($conect,"SELECT `name`,`img` FROM `film`");
+						$standart =  mysqli_query($conect,"SELECT `name`,`img`,`style` FROM `film`");
 						while ($result_standart = mysqli_fetch_array($standart)){
 						echo '<div class="newFilms__element">
 								<div class="newFilms__img" id ="'.$result_standart['name'].'" style= "background-image:url('.$result_standart['img'].')" >
@@ -298,7 +298,7 @@
 									</div></a>
 								</div>
 								<h3 class="newFilms__title">'.$result_standart['name'].'</h3>
-								<p class="newFilms__text">трелер</p>
+								<p class="newFilms__text">'.$result_standart['style'].'</p>
 								</div>';
 						}
 						
