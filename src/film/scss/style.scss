@@ -366,7 +366,7 @@ header,.navigation{
 	display: flex;
     width: 90%;
     justify-content: center;
-    margin: 0.5%;
+    margin: 10px;
     background: radial-gradient(#2f4f4f,rgba(47,79,79,0.8), transparent);
 	box-shadow: 0 0 5px 0px;
     border-radius: 80px;
@@ -388,9 +388,8 @@ header,.navigation{
 }
 .publicity{	
 	margin:5%;
-	margin-top:0%;
 	width:220px;
-	height:560px;
+	
 	max-width:100%;
 	display:flex;
 }
@@ -546,6 +545,9 @@ header,.navigation{
 }
 
 @media screen and (min-width: 1350px) and (max-width: 1550px){
+	.two-general__center-block{
+		height:600px;
+	}
 	.one-general__center-block{
 		height:480px;
 	}
@@ -560,6 +562,9 @@ header,.navigation{
 	.one-general__center-block{
 		height:460px;
 	}
+	.two-general__center-block{
+		height:580px;
+	}
 	.description{
 		&__text{
 			font-size:16px;
@@ -569,6 +574,9 @@ header,.navigation{
 @media screen and (min-width: 950px) and (max-width: 1150px){
 	.one-general__center-block{
 		height:420px;
+	}
+	.two-general__center-block{
+		height:560px;
 	}
 	.description{
 		&__text{
@@ -580,6 +588,7 @@ header,.navigation{
 	.one-general__center-block{
 		flex-direction:column;
 		align-items:center;
+		height:580px;
 	}
 	.previe{
 		width:50%;
@@ -589,9 +598,10 @@ header,.navigation{
 		height:60%;
 		width:90%;
 	}
-	.one-general__center-block{
-		height:580px;
+	.two-general__center-block{
+		height:560px;
 	}
+	
 }
 @media screen and (min-width: 500px) and (max-width: 680px){
 	.one-general__center-block{
@@ -613,8 +623,22 @@ header,.navigation{
 		height:580px;
 		border-radius:20px;
 	}
+	.info{
+		&__text{
+			font-size:15px;
+		}
+	}
+	.two-general__center-block{
+		height:540px;
+	}
 }
 @media screen and (min-width: 320px) and (max-width: 500px){
+	.info{
+		width:95%;
+		flex-wrap:wrap;
+		margin:10px;
+		
+	}
 	.one-general__center-block{
 		flex-direction:column;
 		align-items:center;
@@ -635,8 +659,15 @@ header,.navigation{
 		height:580px;
 		border-radius:20px;
 	}
+	.two-general__center-block{
+		border-radius:20px;
+	}
+	.two-general__center-block{
+		height:540px;
+	}
 }
 @media screen and (min-width: 375px) and (max-width: 400px){
+	
 	.one-general__center-block{
 		flex-direction:column;
 		align-items:center;

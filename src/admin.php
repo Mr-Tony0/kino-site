@@ -71,10 +71,11 @@ if (isset($_POST['submit'])){
 	$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
 	$date = mysqli_real_escape_string($conect, trim($_POST['data']));
 	$time = mysqli_real_escape_string($conect, trim($_POST['time']));
-	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time)){
+	
+	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time) and strlen($description)<2139){
 		$query ="SELECT * FROM `film` WHERE name = '$name'";
 		$data = mysqli_query($conect, $query);
-		if(mysqli_num_rows($data) == 0 and $addVideo == 1 and $addImg == 1){
+		if(mysqli_num_rows($data) == 0 and $addVideo == 1 and $addImg == 1 ){
 			$query ="INSERT INTO`film`(name, description, img, video, rang, data, style, country, time) VALUES('$name', '$description', '$loadImg', '$loadPlayer','$rang', '$date', '$janr', '$strana', '$time')";
 			mysqli_query($conect, $query);
 			//echo'фильм добавлен';
@@ -208,7 +209,7 @@ if (isset($_POST['submit'])){
 			</select>
 		</div>
 		<p>описание</p>
-		<textarea class="column__textarea" name="description"></textarea>
+		<textarea class="column__textarea" name="description" placeholder = "Количество символов не должно превышать 1150..."></textarea>
 		
 		<p>рейтинг фильма от 0 до 10 по IMDb</p>
 		<input class="column__input" type="number" name="rang" step="any" >
@@ -315,7 +316,7 @@ if (isset($_POST['submit'])){
 			</select>
 		</div>
 		<p>описание</p>
-		<textarea class="column__textearea" name="description"></textarea>
+		<textarea class="column__textearea" name="description" placeholder = "Количество символов не должно превышать 1150..."></textarea>
 		
 		<p>рейтинг фильма от 0 до 10 по IMDb</p>
 		<input class="column__input" type="number" name="rang" step="any" >

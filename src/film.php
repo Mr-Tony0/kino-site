@@ -80,7 +80,7 @@ include('C:\Users\ROOT\Downloads\OSPanel\domains\kino-site\src\data.php');
 	<section class="two-general">
 		<div class="two-general__center-block center-block">
 			<aside class="publicity">
-				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
+				<a href="https://galior-market.ru/inv=MrFreyd1483" height="100%" width="50%" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
 				<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_160x600.jpg" width="100%" height="100%" border="0" /></a>
 			</aside>
 			
