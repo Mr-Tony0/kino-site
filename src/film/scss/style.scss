@@ -356,9 +356,9 @@ header,.navigation{
 	width:35%;
 }
 .player{
-	margin-top:2%;
+	margin-top:5%;
 	height:75%;
-	width:35%;
+	width:50%;
 	&__video{
 		height:100%;
 		width:100%;
@@ -397,7 +397,7 @@ header,.navigation{
 }
 .publicity{	
 	margin:5%;
-	width:220px;
+	width:15%;
 	
 	max-width:100%;
 	display:flex;
@@ -580,7 +580,7 @@ header,.navigation{
 		}
 	}
 	.player{
-		height:65%;
+		//height:65%;
 	}
 }
 @media screen and (min-width: 950px) and (max-width: 1150px){
@@ -588,7 +588,7 @@ header,.navigation{
 		height:420px;
 	}
 	.two-general__center-block{
-		height:560px;
+		height:540px;
 	}
 	.description{
 		&__text{
@@ -596,7 +596,7 @@ header,.navigation{
 		}
 	}
 	.player{
-		height:55%;
+		width:50%;
 	}
 }
 @media screen and (min-width: 680px) and (max-width: 950px){
@@ -614,14 +614,18 @@ header,.navigation{
 		width:90%;
 	}
 	.two-general__center-block{
-		height:560px;
+		height:500px;
 	}
-	
+	.player{
+		height:65%;
+	}
 }
 @media screen and (min-width: 500px) and (max-width: 680px){
 	.one-general__center-block{
 		flex-direction:column;
 		align-items:center;
+		height:580px;
+		border-radius:20px;
 	}
 	.previe{
 		width:65%;
@@ -634,9 +638,10 @@ header,.navigation{
 			font-size:15px;
 		}
 	}
-	.one-general__center-block{
-		height:580px;
-		border-radius:20px;
+	.publicity{
+		height:80%;
+	
+		
 	}
 	.info{
 		&__text{
@@ -644,7 +649,15 @@ header,.navigation{
 		}
 	}
 	.two-general__center-block{
-		height:540px;
+		border-radius:20px;
+		height:430px;
+		margin-left:0;
+		margin-right:0;
+		width:95%;
+	}
+	.player{
+		height:60%;
+		width:60%
 	}
 }
 @media screen and (min-width: 320px) and (max-width: 500px){
@@ -676,12 +689,17 @@ header,.navigation{
 	}
 	.two-general__center-block{
 		border-radius:20px;
+		height:400px;
+		margin-left:0;
+		margin-right:0;
+		width:95%;
 	}
-	.two-general__center-block{
-		height:540px;
+	.player{
+		height:60%;
+		width:75%
 	}
 }
-@media screen and (min-width: 375px) and (max-width: 400px){
+@media screen and (min-width: 375px) and (max-width: 425px){
 	
 	.one-general__center-block{
 		flex-direction:column;
@@ -702,6 +720,17 @@ header,.navigation{
 		width:95%;
 		height:580px;
 		border-radius:20px;
+	}
+	.two-general__center-block{
+		border-radius:20px;
+		height:320px;
+		margin-left:0;
+		margin-right:0;
+		width:95%;
+	}
+	.player{
+		height:75%;
+		width:75%
 	}
 }
 @media screen and (min-width: 320px) and (max-width: 375px){
@@ -724,5 +753,16 @@ header,.navigation{
 		width:95%;
 		height:580px;
 		border-radius:20px;
+	}
+	.two-general__center-block{
+		border-radius:20px;
+		height:220px;
+		margin-left:0;
+		margin-right:0;
+		width:95%;
+	}
+	.player{
+		height:75%;
+		width:75%
 	}
 }
