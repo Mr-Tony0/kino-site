@@ -104,7 +104,7 @@ include('data.php');
 		<div class="arround-block">
 		<?php
 		$conect = mysqli_connect('localhost','root','','films');
-		$rek =  mysqli_query($conect,"SELECT `name`,`img`FROM `film` ORDER BY `data` DESC LIMIT 5");
+		$rek =  mysqli_query($conect,"SELECT `name`,`img`FROM `film` ORDER BY `data` DESC LIMIT 4");
 		while ($result_rek = mysqli_fetch_array($rek)){
 			
 				echo '<div class="arround-block__element">
@@ -126,11 +126,11 @@ include('data.php');
 	</section>
 	<section class="foo-general">
 		<div class="arround-block arroundColor">
-			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
-			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
-			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
-			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
-			<a href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="300" height="200px" border="0" /></a>
+			<a class="arround-block__element" href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="100%" height="100%" border="0"style = "margin:0;" /></a>
+			<a class="arround-block__element" href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="100%" height="100%" border="0"style = "margin:0;" /></a>
+			<a class="arround-block__element" href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="100%" height="100%" border="0"style = "margin:0;" /></a>
+			<a class="arround-block__element" href="https://galior-market.ru/inv=MrFreyd1483" target="_blank"><img src="https://galior-market.ru/images/banners/ru/for_sellers_300x300.jpg" width="100%" height="100%" border="0"style = "margin:0;"/></a>
+		
 		</div>
 	</section>
 	<footer class="footer">

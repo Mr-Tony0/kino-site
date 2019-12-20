@@ -34,6 +34,11 @@
 .lightColor{
 	color:$Light;
 }
+.arroundColor{
+	background:transparent;
+	box-shadow:0 0 0 0;
+	border:0;
+}
 @media screen and (min-width: 320px) and (max-width: 750px){
 	.desktop,.search{
 		display:none;
