@@ -25,8 +25,8 @@
 				<ul class="headerCenter__ul">
 					<li class="headerCenter__li"><a class="headerCenter__link" href="index.php">Главная</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Каталог</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Новинки</a></li>
-					<li class="headerCenter__li"><a class="headerCenter__link" href="">Популярное</a></li>
+					<li class="headerCenter__li" id = "new33"><a class="headerCenter__link" href="#new">Новинки</a></li>
+					<li class="headerCenter__li" id = "top33"><a class="headerCenter__link" href="#top">Популярное</a></li>
 				</ul>
 			</div>
 				<div class="search">
@@ -88,6 +88,19 @@
 			<img class="slider__go" id="next" src="./img/next1.png">
 		</div>
 		
+	</section>
+	<section class="generlaText">
+		<center>
+		<h1>Смотреть бесплатно в хорошем качестве</h1>
+		<p>
+			Идейные соображения высшего порядка, а также реализация намеченных плановых заданий</br>
+			требуют от нас анализа новых предложений. Товарищи!</br>
+			новая модель организационной деятельности обеспечивает широкому кругу (специалистов) участие в формировании</br>
+			соответствующий условий активизации.
+
+
+		</p>
+		</center>
 	</section>
 	<section>
 		<div class="nameSection">
@@ -171,6 +184,7 @@
 </form>
 
 <script src="./js/jquery-3.3.1.js"></script>
+<script src="./js/script228.js"></script>
 <script src="../dist/main.js"></script>
 </body>
 </html>

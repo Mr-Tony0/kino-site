@@ -85,13 +85,7 @@ include('data.php');
 			</aside>
 			
 			<div class="player" id="play">
-				
-					<video class="player__video" preload="none" controls playsinline webkit-playsinline>
-						<?php echo '<source src=".' . htmlspecialchars($resultSearch['video']) . '">';?>
-						<track srclang="en" kind="subtitles" src="mediaelement.vtt">
-						<track srclang="en" kind="chapters" src="chapters.vtt">
-					</video>
-				
+				<iframe class="player__video" width="1252" height="704" src="<? echo $resultSearch['videoLink'];?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</div>
 			
 			<aside class="publicity">

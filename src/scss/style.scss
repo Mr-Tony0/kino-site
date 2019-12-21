@@ -311,6 +311,10 @@ header,.navigation{
 	background:$Light;
 	&__text{
 		margin:10px;
+		:hover{
+			color:$elements;
+			background:white;
+		}
 	}
 	&__link{
 		color:$Dark;
@@ -323,7 +327,9 @@ header,.navigation{
 	flex-wrap:wrap;
 	&__select{
 		margin:1%;
-		color:$Dark
+		background:$blockColor;
+		color:$elements;
+		//border:2px solid $elements;
 	}
 	&__text{
 		
@@ -479,12 +485,14 @@ header,.navigation{
 }
 .row{
 	display:flex;
+	align-items:center;
 	&__selsect{
 		background:$blockColor;
 		color:$elements;
 		border:2px solid $elements;
 	}
 }
+
 .center{
 	display:flex;
 	justify-content:center;

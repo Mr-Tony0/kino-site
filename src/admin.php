@@ -10,8 +10,6 @@ if (isset($_POST['submit'])){
 	$apendImg=date('YmdHis').rand(100,1000).'.jpg'; 
 	$uploadfile1 = "$uploadImg$apendImg";
 	$uploadVideo = './film/video/';
-	$apendVideo=date('YmdHis').rand(100,1000).'.mp4'; 
-	$uploadfile2 = "$uploadVideo$apendVideo"; 
 	if(($_FILES['loadImg']['type'] == 'image/gif' || $_FILES['loadImg']['type'] == 'image/jpeg' || $_FILES['loadImg']['type'] == 'image/png') && ($_FILES['loadImg']['size'] != 0 and $_FILES['loadImg']['size']<=1512000)){ 
 		if (move_uploaded_file($_FILES['loadImg']['tmp_name'], $uploadfile1)){
 			$size = getimagesize($uploadfile1); 
@@ -27,35 +25,7 @@ if (isset($_POST['submit'])){
 	} else { 
 	echo '<p style="background:red; color:white; margin:0;">Размер или тип изображения не коректны попрбуйте выбрать другой файл!</p>';
 	}
-	
-	if(($_FILES['loadPlayer']['type'] == 'video/mp4' || $_FILES['loadPlayer']['type'] == 'video/3GP' || $_FILES['loadPlayer']['type'] == 'video/avi' || $_FILES['loadPlayer']['type'] == 'video/mkw' || $_FILES['loadPlayer']['type'] == 'video/mov' || $_FILES['loadPlayer']['type'] == 'video/wma') && ($_FILES['loadPlayer']['size'] != 0 and $_FILES['loadImg']['size']<=1512000000)){ 
-			if (move_uploaded_file($_FILES['loadPlayer']['tmp_name'], $uploadfile2)){
-				$size = getimagesize($uploadfile2); 
-				if ($size[0] < 5001 && $size[1]<15001){ 
-					$addVideo = 1;	
-				}else{
-					echo '<p style="background:red; color:white; margin:0;">Загружаемое видео превышает допустимые нормы (ширина не более - 500; высота не более 1500)</p>';
-					unlink($uploadfile2); 
-				} 
-			} else {
-				echo '<p style="background:red; color:white; margin:0;">видео не загружено попробуйте снова!</p>';
-			} 
-		} else { 
-		echo '<p style="background:red; color:white; margin:0;">Размер или тип видео не коректны попрбуйте выбрать другой файл!</p>';
-		}
-	
-		/*
-	$conect = mysqli_connect('localhost','root','','films');
-	$query ="SELECT * FROM `film` WHERE video = '$uploadfile2' AND img = '$uploadfile1'";
-	$data = mysqli_query($conect, $query);
-	if(mysqli_num_rows($data) == 0){
-		$query ="INSERT INTO`film`(video,img) VALUES('$uploadfile2','$uploadfile1')";
-		mysqli_query($conect, $query);
-		mysqli_close($conect);
-		header("Location: admin.php");
-	
-	}
-	*/
+
 
 
 	$name =  mysqli_real_escape_string($conect, trim($_POST['name']));
@@ -66,17 +36,17 @@ if (isset($_POST['submit'])){
 	$janr = mysqli_real_escape_string($conect, trim($_POST['janr']));
 	$strana = mysqli_real_escape_string($conect, trim($_POST['strana']));
 	$loadImg = $uploadfile1;
-	$loadPlayer = $uploadfile2;
 	$description = mysqli_real_escape_string($conect, trim($_POST['description']));
 	$rang = mysqli_real_escape_string($conect, trim($_POST['rang']));
 	$date = mysqli_real_escape_string($conect, trim($_POST['data']));
 	$time = mysqli_real_escape_string($conect, trim($_POST['time']));
+	$loadPlayerLink = mysqli_real_escape_string($conect, trim($_POST['loadPlayerLink']));
 	
-	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayer) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time) and strlen($description)<2139){
+	if(!empty($name) and !empty($janr) and !empty($strana) and !empty($loadImg) and !empty($loadPlayerLink) and !empty($description) and !empty($rang) and ($rang <= 10) and !empty($date) and !empty($time) and strlen($description)<2139){
 		$query ="SELECT * FROM `film` WHERE name = '$name'";
 		$data = mysqli_query($conect, $query);
-		if(mysqli_num_rows($data) == 0 and $addVideo == 1 and $addImg == 1 ){
-			$query ="INSERT INTO`film`(name, description, img, video, rang, data, style, country, time) VALUES('$name', '$description', '$loadImg', '$loadPlayer','$rang', '$date', '$janr', '$strana', '$time')";
+		if(mysqli_num_rows($data) == 0 and $addImg == 1 ){
+			$query ="INSERT INTO`film`(name, description, img, rang, data, style, country, time, videoLink) VALUES('$name', '$description', '$loadImg','$rang', '$date', '$janr', '$strana', '$time', '$loadPlayerLink')";
 			mysqli_query($conect, $query);
 			//echo'фильм добавлен';
 			mysqli_close($conect);
@@ -219,8 +189,8 @@ if (isset($_POST['submit'])){
 				<input class="column__file" type="file" name="loadImg" id="imgFile"/>
 			</div>
 			<div class="column">
-				<p>установить видеоплеер</p>
-				<input class="column__file" type="file" name="loadPlayer"></br></br>
+				<p>Установите ссылку видеоплеера</p>
+				<input class="column__file" type = "text"  name="loadPlayerLink" >
 			</div>
 		</div>
 		<p>дата выхода</p>
@@ -326,8 +296,8 @@ if (isset($_POST['submit'])){
 				<input class="column__file" type="file" name="loadImg" id="imgFile"/>
 			</div>
 			<div class="column">
-				<p>установить видеоплеер</p>
-				<input class="column__file" type="file" name="loadPlayer"></br></br>
+				<p>Установите ссылку видеоплеера</p>
+				<input class="column__file" type = "text"  name="loadPlayerLink" >
 			</div>
 		</div>
 		<p>дата выхода</p>
