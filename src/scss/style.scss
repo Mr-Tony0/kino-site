@@ -192,7 +192,7 @@ header,.navigation{
 	background-size:100% 100%;
 }
 .img:nth-child(2){
-	background-image:url(../img/film6.png);
+	background-image:url(../img/film2.png);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
@@ -211,7 +211,21 @@ header,.navigation{
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
-
+.generlaText{
+	margin-top:50px;
+	margin-bottom:100px;
+	&__center{
+		width:50%;
+	}
+	&__title{
+		color:$elements;
+		font-family:$title;
+		box-shadow: 0 0 5px 1px;
+		
+		
+		
+	}
+}
 .nameSection{
 	&__line{
 		@include line;
@@ -607,5 +621,31 @@ header,.navigation{
 @media screen and (min-width: 320px) and (max-width: 425px){
 	.slider{
 		height:250px;
+	}
+}
+@media screen and (min-width: 500px) and (max-width: 810px){
+	.generlaText{
+		&__center{
+			width:70%;
+			
+		}
+		
+	}
+}
+@media screen and (min-width: 375px) and (max-width: 500px){
+	.generlaText{
+		&__center{
+			width:90%;
+	
+		}
+	}
+}
+
+@media screen and (min-width: 320px) and (max-width: 375px){
+	.generlaText{
+		&__center{
+			width:95%;
+	
+		}
 	}
 }

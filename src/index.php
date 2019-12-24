@@ -25,8 +25,8 @@
 				<ul class="headerCenter__ul">
 					<li class="headerCenter__li"><a class="headerCenter__link" href="index.php">Главная</a></li>
 					<li class="headerCenter__li"><a class="headerCenter__link" href="katalog.php">Каталог</a></li>
-					<li class="headerCenter__li" id = "new33"><a class="headerCenter__link" href="#new">Новинки</a></li>
-					<li class="headerCenter__li" id = "top33"><a class="headerCenter__link" href="#top">Популярное</a></li>
+					<li class="headerCenter__li" id = "newD"><a class="headerCenter__link" href="#new">Новинки</a></li>
+					<li class="headerCenter__li" id = "topD"><a class="headerCenter__link" href="#top">Популярное</a></li>
 				</ul>
 			</div>
 				<div class="search">
@@ -51,8 +51,8 @@
 		<ul class="navigation__ul">
 			<li class="navigation__li"><a class="navigation__link" href="">Главная</a></li>
 			<li class="navigation__li"><a class="navigation__link" href="">Каталог</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="">Новинки</a></li>
-			<li class="navigation__li"><a class="navigation__link" href="">Популярное</a></li>
+			<li class="navigation__li" id="newM"><a class="navigation__link" href="#new">Новинки</a></li>
+			<li class="navigation__li" id="topM"><a class="navigation__link" href="#top">Популярное</a></li>
 		</ul>
 		<div class="blockSearch" id = "twoSearch">
 			<div class="blockSearch__element">
@@ -91,15 +91,22 @@
 	</section>
 	<section class="generlaText">
 		<center>
-		<h1>Смотреть бесплатно в хорошем качестве</h1>
-		<p>
-			Идейные соображения высшего порядка, а также реализация намеченных плановых заданий</br>
-			требуют от нас анализа новых предложений. Товарищи!</br>
-			новая модель организационной деятельности обеспечивает широкому кругу (специалистов) участие в формировании</br>
-			соответствующий условий активизации.
-
-
-		</p>
+		<div class="generlaText__center">
+			<h1 class="generlaText__title">KINgaroo - Только годные фильмы!</h1>
+			<p>
+				На KINgaroo вы сможете выбрать и посмотреть кино на любой вкус.
+				У нас вы найдете интересные фильмы в качественной озвучке и высоком качестве.
+				Нашу базу видео материалов пополняют ежедневно, не только новинки киноиндустрии, но и классические фильмы.
+				На странице фильма вы можете ознакомиться с его описанием и рейтингом IMDb
+			</p>
+			<p>
+				У нас на сайте реклама не мешает просмотру, так как в нашем плеере ее нет.
+				Что позволяет смотреть фильмы без рекламы бесплатно.
+				Наш сайт адаптирован под большинство видов устройств
+				и за счет хорошей оптимизации и минимального использования скриптов
+				вы можете пользоваться сайтом на мобильном телефоне не тратя нервы и время на долгую загрузку сайта.
+			</p>
+		</div>
 		</center>
 	</section>
 	<section>
@@ -184,7 +191,7 @@
 </form>
 
 <script src="./js/jquery-3.3.1.js"></script>
-<script src="./js/script228.js"></script>
 <script src="../dist/main.js"></script>
+
 </body>
 </html>

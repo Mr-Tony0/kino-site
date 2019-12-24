@@ -315,6 +315,5 @@ if (isset($_POST['submit'])){
 ?>	
 </center>
 </form>
-<script src="./js/script.js"></script>
 </body>
 </html>

@@ -334,11 +334,6 @@
 		</div>
 	</footer>
 <script src="./js/jquery-3.3.1.js"></script>
-<script>
-	$('input[type="checkbox"]').on('change', function() {
-	$('input[type="checkbox"]').not(this).prop('checked', false);
-});
-</script>
 <script src="../dist/main.js"></script>
 </body>
 </html>
